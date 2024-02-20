@@ -1,0 +1,51 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Balsamiq+Sans:ital,wght@0,400;0,700;1,400;1,700&display=swap');
+
+.header-background {
+    background-color: #deeef7;
+}
+
+.placeholder-style::placeholder{
+    font-family: 'Poppins';
+    color: #827976;
+}
+
+.nav-color {
+    background-color: #104167;
+}
+
+.font-poppins {
+    font-family: 'Poppins';
+}
+
+.nav-link:hover,
+.nav-link:focus{
+    color: #f5efef;
+    text-decoration: underline;
+}
+
+.font-balsamiq-sans {
+    font-family: "Balsamiq Sans";
+}
+
+.color-3F3939 {
+    color: #3F3939;
+}
+
+.category-hover:hover,
+.category-hover:focus {
+    background-color: rgb(229 231 235);
+    font-weight: 600;
+    font-size: xx-large;
+}
+
+.item-hover:hover,
+.item-hover:focus {
+    background-color: rgb(229 231 235);
+    color: rgb(101 163 13);
+}
+
+.brand-hover:hover,
+.brand-hover:focus {
+    background-color: rgb(229 231 235);
+}
