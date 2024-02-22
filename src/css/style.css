@@ -5,11 +5,6 @@
     background-color: #deeef7;
 }
 
-.placeholder-style::placeholder{
-    font-family: 'Poppins';
-    color: #827976;
-}
-
 .nav-color {
     background-color: #104167;
 }
