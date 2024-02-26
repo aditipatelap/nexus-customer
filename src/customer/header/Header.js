@@ -9,10 +9,6 @@ import { MdAccountCircle } from "react-icons/md";
 
 const Header = () => {
   const logoPath = process.env.PUBLIC_URL + "/images/logo/logo_3x.png";
-  const searchIconPath = process.env.PUBLIC_URL + "/images/icons/search.png";
-  const favoritesIconPath = process.env.PUBLIC_URL + "/images/icons/favorites.png";
-  const bagIconPath = process.env.PUBLIC_URL + "/images/icons/bag.png";
-  const profileIconPath = process.env.PUBLIC_URL + "/images/icons/profile.png";
 
   const [searchQuery, setSearchQuery] = useState('');
   const handleSearch = (searchQuery) => {
