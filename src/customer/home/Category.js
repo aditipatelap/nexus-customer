@@ -35,14 +35,14 @@ const Category = () => {
                 <h1  className="font-balsamiq-sans font-bold text-2xl sm:text-xl xs:text-lg">SHOP BY CATEGORY</h1>
             </div>
             {/* categories icons and it's name*/}
-            <div className="grid grid-cols-5 lg:grid-cols-4 md:grid-cols-3 sm:grid-cols-2 xs:grid-cols-1 gap-5 mt-5">
+            <div className="grid grid-cols-5 lg:grid-cols-4 md:grid-cols-3 sm:grid-cols-2 xs:grid-cols-2 gap-5 mt-5">
                 {categoriesList.map((category, id) => (
                     <a href="#">
                         <div key={id} className="bg-white border-2 border-gray-400 rounded-xl p-2 pt-4 shadow-lg h-44 flex flex-col items-center justify-center category-hover">
                             <div className='m-2 mb-0'>
                                 {React.cloneElement(category.icon, { size: 50 })}
                             </div>
-                            <h3 className="font-poppins text-base mt-6 text-center">{category.name}</h3>
+                            <h3 className="px-2 font-poppins text-base md:text-sm sm:text-xs xs:text-xs mt-6 text-center">{category.name}</h3>
                         </div>
                     </a>
                 ))}

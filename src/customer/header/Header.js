@@ -6,11 +6,10 @@ import { FaHeart } from "react-icons/fa6";
 import { IoBagHandle } from "react-icons/io5";
 import { MdAccountCircle } from "react-icons/md";
 
-
-const Header = () => {
+const Header = ({ isProfileClicked, setIsProfileClicked, handleProfileClick }) => {
   const logoPath = process.env.PUBLIC_URL + "/images/logo/logo_3x.png";
-
   const [searchQuery, setSearchQuery] = useState('');
+  
   const handleSearch = (searchQuery) => {
     console.log(searchQuery);
     setSearchQuery('');
@@ -40,12 +39,18 @@ const Header = () => {
 
         {/* icons on the right */}
         <div className="space-x-3 flex justify-center">
-          <FaHeart className="color-3F3939 text-lg sm:text-xl md:text-2xl lg:text-3xl xl:text-4xl 2xl:text-6xl"/>
-          <IoBagHandle className="color-3F3939 text-lg sm:text-xl md:text-2xl lg:text-3xl xl:text-4xl 2xl:text-6xl"/>
-          <MdAccountCircle className="color-3F3939 text-lg sm:text-xl md:text-2xl lg:text-3xl xl:text-4xl 2xl:text-6xl"/>
+          <a href="#">
+            <FaHeart className="color-3F3939 text-lg sm:text-xl md:text-2xl lg:text-3xl xl:text-4xl 2xl:text-6xl"/>
+          </a>
+          <a href="#">
+            <IoBagHandle className="color-3F3939 text-lg sm:text-xl md:text-2xl lg:text-3xl xl:text-4xl 2xl:text-6xl"/>
+          </a>
+          <a href="#" onClick={handleProfileClick}>
+            <MdAccountCircle className="z-20 color-3F3939 text-lg sm:text-xl md:text-2xl lg:text-3xl xl:text-4xl 2xl:text-6xl" />
+        </a>
         </div>
     </header>
-  )
-}
+  );
+};
 
 export default Header

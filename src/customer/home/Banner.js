@@ -3,7 +3,7 @@ import Slider from 'react-slick';
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
 
-const Banner = () => {
+const Banner = ({ headerHeight }) => {
     const path = process.env.PUBLIC_URL + "/images/photo/banners";
     const images = [
         { src: `${path}/banner_1.png`, alt: 'Banner 1' },
@@ -25,10 +25,11 @@ const Banner = () => {
     };
 
   return (
-    <div className="xs:mt-40 sm:mt-36 md:mt-24 lg:mt-24 xl:mt-28 2xl:mt-32 w-full">
+    <div className="w-full" style={{marginTop: `${headerHeight}px`}}>
         <Slider {...settings}>
             {images.map((image, index) => (
-            <div key={index}  className="bg-black md:h-[380px] lg:h-[450px] xl:h-[500px] 2xl:h-[550px] w-full">
+            <div key={index} className= "lg:h-[450px] xl:h-[500px] 2xl:h-[550px] w-full bg-black">
+                
                 <a href="#">
                     <img
                         src={image.src}

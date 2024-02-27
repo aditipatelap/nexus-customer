@@ -1,12 +1,12 @@
 import React from "react";
-import Home from './customer/home/Home';
+import Main from './customer/Main';
 import { Routes, Route } from 'react-router-dom';
 
 function App() {
   return (
     <div className="App">
       <Routes>
-        <Route path="/" element={ <Home />} />
+        <Route path="/" element={ <Main />} />
       </Routes>
     </div>
 
