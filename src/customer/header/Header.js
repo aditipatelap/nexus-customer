@@ -18,7 +18,7 @@ const Header = ({ isProfileClicked, setIsProfileClicked, handleProfileClick }) =
   return (
     <header className="max-w-full px-6 py-3 h-fit header-background text-white flex items-center">
         {/* Logo */} 
-        <Link to="/home" className="w-8 h-8 sm:h-10 sm:w-10 md:h-11 md-w-11 lg:h-12 lg:w-12 xl:h-14 xl:w-14 2xl:h-20 2xl:w-20">
+        <Link to="/" className="w-8 h-8 sm:h-10 sm:w-10 md:h-11 md-w-11 lg:h-12 lg:w-12 xl:h-14 xl:w-14 2xl:h-20 2xl:w-20">
             <img src={logoPath} alt="Nexus" className="h-full w-full object-contain"/>
         </Link>
 

@@ -29,11 +29,11 @@ const Footer = () => {
     
     return (
         <footer className="bg-sky-900 text-white">
-            <div className="flex flex-row mt-10 px-6 sm:px-2 xs:px-4 py-5 md:py-4 sm:py-3 xs:py-2 items-start justify-between">
+            <div className="flex flex-row px-6 sm:px-2 xs:px-4 py-5 md:py-4 sm:py-3 xs:py-2 items-start justify-between">
                 {/* Logo + Address */}
                 <div className="pr-2 w-60 md:w-40 sm:w-36">
                     <div className="pl-0 h-20 ">
-                        <Link to="/home">
+                        <Link to="/">
                             <img src={basePath + "/name_1x.png"} alt="nexus" className="h-full w-full object-scale-down" />
                         </Link>
                     </div>
@@ -42,7 +42,7 @@ const Footer = () => {
                             nexus building, uajala circle, Thaltej, Ahmedabad, Gujarat - 382444. <br />
                             GST:- 3232FCYVYV2312312 <br />
                         </p>
-                        <Link to="/home" className="md:text-sm sm:text-xs xs:text-xs hover:underline hover:text-sky-400">www.nexushere.com</Link>
+                        <Link to="/" className="md:text-sm sm:text-xs xs:text-xs hover:underline hover:text-sky-400">www.nexushere.com</Link>
                     </div>
                 </div>
 

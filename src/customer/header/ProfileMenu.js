@@ -1,8 +1,10 @@
-import React from 'react'
+import React from 'react';
+import { Link } from "react-router-dom";
 
-const ProfileMenu = ({ handleProfileClick }) => {
+
+const ProfileMenu = ({ handleProfileClick, navigateToLink }) => {
     const menuLinks = [
-        {src:"#", title:"Your Account"},
+        {src:"/account", title:"Your Account"},
         {src:"#", title:"Track Your Order"},
         {src:"#", title:"Switch Account"},
         {src:"#", title:"Sign Out"},
@@ -15,7 +17,9 @@ const ProfileMenu = ({ handleProfileClick }) => {
             <div className="flex justify-end">
                 <div className="flex flex-col items-start bg-white border-2 border-slate-800 rounded-md">
                     {menuLinks.map((link) => (
-                            <a href={link.src} className="px-10 py-1.5 w-full h-full md:text-sm sm:text-sm xs:text-xs hover:underline hover:text-white hover:bg-sky-900">{link.title}</a>
+                        <div className="px-10 py-1.5 w-full h-full font-poppins md:text-sm sm:text-sm xs:text-xs hover:underline hover:text-white hover:bg-sky-900">
+                            <Link to={link.src} onClick={handleProfileClick} >{link.title}</Link>
+                        </div>
                     ))}
                 </div>
             </div>

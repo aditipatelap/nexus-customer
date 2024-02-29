@@ -1,13 +1,17 @@
 import React, { useRef, useEffect, useState } from 'react';
 import Header from '../customer/header/Header';
 import Nav from '../customer/header/Nav';
-import Home from './home/Home';
 import ProfileMenu from './header/ProfileMenu';
+import Footer from '../customer/footer/Footer';
+import { Routes, Route } from 'react-router-dom';
+import Home from './home/Home';
+import Account from './account/Account';
 
 const Main = () => {
     const headerRef = useRef(null);
     const [headerHeight, setHeaderHeight] = useState(0);
     const [isProfileClicked, setIsProfileClicked] = useState(false);
+    const blurStyle = isProfileClicked ? { filter: 'blur(5px)' } : {};
 
     const handleProfileClick = () => {
         setIsProfileClicked(!isProfileClicked);
@@ -36,19 +40,31 @@ const Main = () => {
 
     return (
         <div>
+            {/* fixed header and nav bar  */}
             <div className="fixed w-full z-10 top-0 " ref={headerRef}>
                 <Header 
                     isProfileClicked={isProfileClicked}
                     setIsProfileClicked={setIsProfileClicked}
                     handleProfileClick={handleProfileClick}
                 />
-                <Nav isProfileClicked={isProfileClicked} />
+                <div style={blurStyle}>
+                    <Nav  />
+                </div>
+                {isProfileClicked && <ProfileMenu handleProfileClick={handleProfileClick} /> }
             </div>
-            {isProfileClicked && <ProfileMenu handleProfileClick={handleProfileClick} /> }
-            <Home 
-                headerHeight={headerHeight}
-                isProfileClicked={isProfileClicked}
-            />
+
+            {/* change the pages */}
+            <div style={blurStyle}>
+                <Routes>
+                    <Route path="/" element={ <Home headerHeight={headerHeight}/> } />
+                    <Route path="/account" element={ <Account headerHeight={headerHeight}/> } />
+                </Routes>
+            </div>
+
+            {/* fixed footer  */}
+            <div style={blurStyle}>
+                <Footer/>
+            </div>
         </div>
     );
 };

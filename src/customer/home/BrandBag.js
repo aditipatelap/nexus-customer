@@ -15,7 +15,7 @@ const BrandBag = () => {
   ];
 
   return (
-    <div className="mx-6 mt-8">
+    <div className="mx-6 mb-8">
       {/* Title */}
       <div className="color-3F3939 flex flex-row justify-between">
         <h1 className="font-balsamiq-sans font-bold text-2xl">BRAND TO BAG</h1>

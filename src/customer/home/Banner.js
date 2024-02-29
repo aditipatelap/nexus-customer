@@ -25,7 +25,7 @@ const Banner = ({ headerHeight }) => {
     };
 
   return (
-    <div className="w-full" style={{marginTop: `${headerHeight}px`}}>
+    <div className="w-full mb-8" style={{marginTop: `${headerHeight}px`}}>
         <Slider {...settings}>
             {images.map((image, index) => (
             <div key={index} className= "lg:h-[450px] xl:h-[500px] 2xl:h-[550px] w-full bg-black">

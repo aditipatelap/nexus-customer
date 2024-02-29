@@ -4,19 +4,15 @@ import Category from './Category';
 import Deals from './Deals';
 import BestSeller from './BestSeller';
 import BrandBag from './BrandBag';
-import Footer from '../footer/Footer';
 
-const Home = ({ headerHeight, isProfileClicked }) => {
-  const blurStyle = isProfileClicked ? { filter: 'blur(5px)' } : {};
-  
+const Home = ({ headerHeight }) => {
   return (
-    <div style={blurStyle}>
+    <div>
       <Banner headerHeight = {headerHeight}/>
       <Category />
       <Deals />
       <BestSeller />
       <BrandBag />
-      <Footer />
     </div>
   )
 }

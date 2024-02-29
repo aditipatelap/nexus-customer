@@ -1,6 +1,6 @@
 import React from 'react'
 
-const Nav = ({ isProfileClicked }) => {
+const Nav = () => {
   const categories = [
     {title: "Fashion", href: "#"},
     {title: "Personal Care", href: "#"},
@@ -14,10 +14,8 @@ const Nav = ({ isProfileClicked }) => {
     {title: "Pet", href: "#"},
     {title: "Art", href: "#"}
   ];
-  const blurStyle = isProfileClicked ? { filter: 'blur(5px)' } : {};
-
+  
   return (
-    <div style={blurStyle}>
       <nav className="bg-sky-900 text-white font-poppins px-6 py-2 w-full" >
           <ul className="flex flex-wrap justify-start">
             {categories.map((category) => (
@@ -27,7 +25,6 @@ const Nav = ({ isProfileClicked }) => {
             ))}
           </ul>
       </nav>
-    </div>
   )
 }
 

@@ -4,7 +4,7 @@ const Deals = () => {
   const basePath = process.env.PUBLIC_URL + "/images/photo/backgrounds";
 
   return (
-    <div className="mx-6 mt-8">
+    <div className="mx-6 mb-8">
       {/* Title */}
       <div className="color-3F3939 flex flex-row justify-between">
         <h1 className="font-balsamiq-sans font-bold text-2xl sm:text-xl xs:text-lg">FLASH DEALS</h1>

@@ -29,7 +29,7 @@ const Category = () => {
     ]
 
     return (
-        <div className="px-6 mt-8">
+        <div className="px-6 mb-8">
             {/* Tittle */}
             <div className="color-3F3939 flex flex-row justify-between">
                 <h1  className="font-balsamiq-sans font-bold text-2xl sm:text-xl xs:text-lg">SHOP BY CATEGORY</h1>
