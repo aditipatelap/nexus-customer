@@ -47,7 +47,7 @@ const Footer = () => {
                 </div>
 
                 {/* Quick Links */}
-                <div className="md:mt-5 sm:mt-5 xs:mt-5">
+                <div className="md:mt-5 sm:mt-5 xs:mt-5 mr-1">
                     <ul className="space-y-3 sm:space-y-2 xs:space-y-1"> 
                         {quickLinks.map((link) => (
                             <li className="font-poppins md:text-sm sm:text-xs xs:text-xs nav-link text-wrap">

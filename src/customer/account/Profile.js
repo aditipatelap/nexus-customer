@@ -46,7 +46,7 @@ const Profile = () => {
 
   return (
     <div className="font-poppins mb-8">
-      <p className="py-6 sm:py-3 xs:py-3">Your Account &gt; Profile </p>
+      <p className="py-6 sm:py-3 xs:py-3 md:text-sm sm:text-sm xs:text-xs">Your Account &gt; Profile </p>
       {/* information mode  */}
       {!isEditing && <ShowProfile handleEditClick={handleEditClick} detailsBunch={detailsBunch} />}
       {/* edit mode */}

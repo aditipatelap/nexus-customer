@@ -35,10 +35,6 @@
     background-color: rgba(40, 95, 136, 0.6);
 }
 
-.color-selected-page-delete {
-    background-color: rgba(226, 50, 50, 0.7);
-}
-
 .category-hover:hover,
 .category-hover:focus {
     background-color: rgb(229 231 235);

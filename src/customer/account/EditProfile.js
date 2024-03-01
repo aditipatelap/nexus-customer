@@ -76,7 +76,7 @@ const EditProfile = ({ handleEditClick, detailsBunch }) => {
 
     return (
         <div>
-            <form>
+            <form id="customerDeatils">
                 {/* profile picture  */}
                 <div className=" flex flex-col items-center w-full">
                     {!profilePic && 
@@ -173,8 +173,9 @@ const EditProfile = ({ handleEditClick, detailsBunch }) => {
 
                 {/* button for edit details  */}
                 <button 
-                className="px-20 py-3 md:px-14 md:py-2 sm:px-14 sm:py-2 xs:px-14 xs:py-2 rounded-lg shadow-lg font-podkova bg-sky-900 text-white text-2xl md:text-xl sm:text-xl xs:text-xl"
-                onClick={handleEditClick}
+                    type="submit"
+                    className="px-20 py-3 md:px-14 md:py-2 sm:px-14 sm:py-2 xs:px-14 xs:py-2 rounded-lg shadow-lg font-podkova bg-sky-900 text-white text-2xl md:text-xl sm:text-xl xs:text-xl"
+                    onClick={() => handleEditClick}
                 >
                     SAVE
                 </button>
