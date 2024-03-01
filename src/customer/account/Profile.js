@@ -26,14 +26,15 @@ const Profile = () => {
     {id:"email", value:email, method:setEmail, label:"Email", type:"text"},
     {id:"password", value:password, method:setPassword, label:"Password", type:"text"},
     {id:"phoneNumber", value:phoneNumber, method:setPhoneNumber, label:"Phone Number", type:"text"},
-    {id:"gender", value:gender, method:setGender, label:"Gender", type:"select"},
-    {id:"birthday", value:birthday, method:setBirthday, label:"Birthday", type:"text"},
     // address 
     {id:"building", value:building, method:setBuilding, label:"Building no. & name", type:"text"},
     {id:"landmark", value:landmark, method:setLandmark, label:"Landmark", type:"text"},
     {id:"area", value:area, method:setArea, label:"Area/Street", type:"text"},
-    {id:"district", value:district, method:setDistrict, label:"District", type:"select"},
+
+    {id:"gender", value:gender, method:setGender, label:"Gender", type:"select"},
+    {id:"birthday", value:birthday, method:setBirthday, label:"Birthday", type:"date"},
     {id:"state", value:state, method:setState, label:"State", type:"select"},
+    {id:"district", value:district, method:setDistrict, label:"District", type:"select"},
 ];
 
   // edit mode on

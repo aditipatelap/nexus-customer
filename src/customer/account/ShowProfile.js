@@ -10,7 +10,7 @@ const ShowProfile = ({ handleEditClick, detailsBunch }) => {
             {/* add profile image */}
             <div className="flex flex-col items-center w-full mb-6">
                 {!profilePic && 
-                    <div className="bg-slate-300 p-16 md:p-12 sm:p-10 xs:p-9 rounded-full">
+                    <div className="bg-slate-300 p-16 md:p-12 sm:p-10 xs:p-9 border-4 border-black rounded-full">
                         <TbCameraPlus className="text-6xl" />
                     </div>
                 }
@@ -31,9 +31,9 @@ const ShowProfile = ({ handleEditClick, detailsBunch }) => {
                         {detail.id === "building" && 
                             <p className="font-bold md:text-sm sm:text-sm xs:text-xs mb-2 ">Address:</p>
                         }
-                        {/* don't show password field */}
                         <div className="flex flex-col justify-center mb-6 md:text-sm sm:text-sm xs:text-xs">
                             <label htmlFor={detail.id}>{detail.label}:</label>
+                            {/* don't show password field */}
                             {detail.id === "password" &&
                                 <p className="border-b-2 border-gray-300 mt-1 px-2">********</p>
                             }
@@ -52,7 +52,6 @@ const ShowProfile = ({ handleEditClick, detailsBunch }) => {
             >
                 EDIT
             </button>
-
         </div>
     );
 };
