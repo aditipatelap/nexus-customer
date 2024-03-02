@@ -4,13 +4,13 @@ const BestSeller = () => {
   const basePath = process.env.PUBLIC_URL + "/images/photo/products";
 
   const bestSellingItems = [
-    {src: basePath + "/product.png", title: "Lorem ipsum dolor, sit amet consectetur adipisicing elit. Asperiores facilis sed fuga, iusto consequatur eius voluptate error?", price: 1000, discount: 20},
-    {src: basePath + "/product.png", title: "Lorem ipsum dolor, sit amet consectetur", price: 1000, discount: 20},
-    {src: basePath + "/product.png", title: "Lorem ipsum dolor, sit amet consectetur adipisicing elit. Asperiores facilis sed fuga, iusto consequatur eius voluptate error?", price: 1000, discount: 20},
-    {src: basePath + "/product.png", title: "Lorem ipsum dolor, sit amet consectetur", price: 1000, discount: 20},
-    {src: basePath + "/product.png", title: "Lorem ipsum dolor, sit amet consectetur", price: 1000, discount: 20},
-    {src: basePath + "/product.png", title: "Lorem ipsum dolor, sit amet consectetur", price: 1000, discount: 20},
-    {src: basePath + "/product.png", title: "Lorem ipsum dolor, sit amet consectetur adipisicing elit. Asperiores facilis sed fuga, iusto consequatur eius voluptate error?", price: 1000, discount: 20},
+    {id: 1, src: basePath + "/product.png", title: "Lorem ipsum dolor, sit amet consectetur adipisicing elit. Asperiores facilis sed fuga, iusto consequatur eius voluptate error?", price: 1000, discount: 20},
+    {id: 2, src: basePath + "/product.png", title: "Lorem ipsum dolor, sit amet consectetur", price: 1000, discount: 20},
+    {id: 3, src: basePath + "/product.png", title: "Lorem ipsum dolor, sit amet consectetur adipisicing elit. Asperiores facilis sed fuga, iusto consequatur eius voluptate error?", price: 1000, discount: 20},
+    {id: 4, src: basePath + "/product.png", title: "Lorem ipsum dolor, sit amet consectetur", price: 1000, discount: 20},
+    {id: 5, src: basePath + "/product.png", title: "Lorem ipsum dolor, sit amet consectetur", price: 1000, discount: 20},
+    {id: 6, src: basePath + "/product.png", title: "Lorem ipsum dolor, sit amet consectetur", price: 1000, discount: 20},
+    {id: 7, src: basePath + "/product.png", title: "Lorem ipsum dolor, sit amet consectetur adipisicing elit. Asperiores facilis sed fuga, iusto consequatur eius voluptate error?", price: 1000, discount: 20},
   ];
 
   return (
@@ -25,9 +25,9 @@ const BestSeller = () => {
 
       {/* Items list */}
       <div className="grid grid-cols-4 md:grid-cols-3 sm:grid-cols-2 xs:grid-cols-1 gap-5 mt-5">
-        {bestSellingItems.map((product, id) => (
-            <a href="#">
-                <div key={id} className="h-full bg-white border-2 border-gray-400 rounded-xl p-2 pt-4 shadow-lg flex flex-col item-hover">
+        {bestSellingItems.map((product) => (
+            <a href="#" key={product.id}>
+                <div  className="h-full bg-white border-2 border-gray-400 rounded-xl p-2 pt-4 shadow-lg flex flex-col item-hover">
                     {/* add image */}
                     <div className="h-48 md:h-40 sm:h-36 xs:h-28 flex justify-start">
                         <img src={product.src} alt="product" className="h-full w-full object-contain"/>

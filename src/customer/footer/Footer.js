@@ -5,26 +5,26 @@ const Footer = () => {
     const basePath = process.env.PUBLIC_URL + "/images/logo";
 
     const quickLinks = [
-        {name: "About Us", href: "#"},
-        {name: "Contact Us", href: "#"},
-        {name: "Customer Services", href: "#"},
-        {name: "Terms & Conditions", href: "#"},
-        {name: "Become a Seller", href: "#"},
+        {id: 1, name: "About Us", href: "#"},
+        {id: 2, name: "Contact Us", href: "#"},
+        {id: 3, name: "Customer Services", href: "#"},
+        {id: 4, name: "Terms & Conditions", href: "#"},
+        {id: 5, name: "Become a Seller", href: "#"},
     ];
 
     const socialLinks = [
-        {name: "Facebook", href: "#"},
-        {name: "Instagram", href: "#"},
-        {name: "Twitter", href: "#"},
-        {name: "YouTube", href: "#"},
+        {id: 1, name: "Facebook", href: "#"},
+        {id: 2, name: "Instagram", href: "#"},
+        {id: 3, name: "Twitter", href: "#"},
+        {id: 4, name: "YouTube", href: "#"},
     ];
 
     const categoriesLinks = [
-        {name: "Fashion", href: "#"},
-        {name: "Electronics", href: "#"},
-        {name: "Books", href: "#"},
-        {name: "Travel", href: "#"},
-        {name: "Health", href: "#"},
+        {id: 1, name: "Fashion", href: "#"},
+        {id: 2, name: "Electronics", href: "#"},
+        {id: 3, name: "Books", href: "#"},
+        {id: 4, name: "Travel", href: "#"},
+        {id: 5, name: "Health", href: "#"},
     ];
     
     return (
@@ -50,7 +50,7 @@ const Footer = () => {
                 <div className="md:mt-5 sm:mt-5 xs:mt-5 mr-1">
                     <ul className="space-y-3 sm:space-y-2 xs:space-y-1"> 
                         {quickLinks.map((link) => (
-                            <li className="font-poppins md:text-sm sm:text-xs xs:text-xs nav-link text-wrap">
+                            <li key={link.id} className="font-poppins md:text-sm sm:text-xs xs:text-xs nav-link text-wrap">
                                 <a href={link.href}>{link.name}</a>
                             </li>
                         ))}
@@ -62,8 +62,10 @@ const Footer = () => {
                     <h2 className="font-poppins text-xl md:text-lg sm:text-base xs:text-sm font-semibold mb-2">CATEGORIES</h2>
                     <ul className="item-center space-y-2 px-3"> 
                         {categoriesLinks.map((link) => (
-                            <li className="font-poppins md:text-sm sm:text-xs xs:text-xs nav-link text-wrap">
-                                <a href={link.href}>{link.name}</a>
+                            <li key={link.id} className="font-poppins md:text-sm sm:text-xs xs:text-xs nav-link text-wrap">
+                                <Link to="/home/products">
+                                   {link.name}
+                                </Link>
                             </li>
                         ))}
                     </ul>
@@ -74,7 +76,7 @@ const Footer = () => {
                     <h2 className="font-poppins text-xl md:text-lg sm:text-base xs:text-sm font-semibold mb-2">FOLLOW US</h2>
                     <ul className="item-center space-y-2 px-3"> 
                         {socialLinks.map((link) => (
-                            <li className="font-poppins md:text-sm sm:text-xs xs:text-xs nav-link text-wrap">
+                            <li key={link.id} className="font-poppins md:text-sm sm:text-xs xs:text-xs nav-link text-wrap">
                                 <a href={link.href}>{link.name}</a>
                             </li>
                         ))}

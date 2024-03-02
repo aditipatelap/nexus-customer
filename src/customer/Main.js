@@ -6,6 +6,7 @@ import Footer from '../customer/footer/Footer';
 import { Routes, Route } from 'react-router-dom';
 import Home from './home/Home';
 import Account from './account/Account';
+import Products from './product/Products';
 
 const Main = () => {
     const headerRef = useRef(null);
@@ -58,6 +59,7 @@ const Main = () => {
                 <Routes>
                     <Route path="/" element={ <Home headerHeight={headerHeight}/> } />
                     <Route path="/account" element={ <Account headerHeight={headerHeight}/> } />
+                    <Route path="/home/products" element={ <Products headerHeight={headerHeight}/> } />
                 </Routes>
             </div>
 

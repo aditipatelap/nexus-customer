@@ -1,4 +1,5 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 import Slider from 'react-slick';
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
@@ -29,14 +30,13 @@ const Banner = ({ headerHeight }) => {
         <Slider {...settings}>
             {images.map((image, index) => (
             <div key={index} className= "lg:h-[450px] xl:h-[500px] 2xl:h-[550px] w-full bg-black">
-                
-                <a href="#">
+                <Link to="/home/products">
                     <img
                         src={image.src}
                         alt={image.alt}
                         className="w-full h-full object-contain sm:object-scale-down xs:object-scale-down"
                     />
-                </a>
+                </Link>
             </div>
             ))}
         </Slider>

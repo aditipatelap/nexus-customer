@@ -1,4 +1,5 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 
 const Deals = () => {
   const basePath = process.env.PUBLIC_URL + "/images/photo/backgrounds";
@@ -16,7 +17,9 @@ const Deals = () => {
           <div className="h-full bg-gray-200 rounded-xl p-4 md:pb-44 sm:pb-40 xs:pb-40" style={{backgroundImage: `url(${basePath}/bg_1.png)`}} >
             <h2 className="font-poppins text-xl sm:text-lg xs:text-base font-semibold text-white mb-2">Big Deal</h2>
             <p className="font-poppins text-base sm:text-sm xs:text-xs text-white mb-4">Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
-            <button className="bg-blue-500 text-white font-poppins py-2 px-4 rounded-lg hover:bg-blue-600 transition-colors duration-200 ease-in-out">Shop Now</button>
+            <Link to="/home/products">
+              <button className="bg-blue-500 text-white font-poppins py-2 px-4 rounded-lg hover:bg-blue-600 transition-colors duration-200 ease-in-out">Shop Now</button>
+            </Link>
           </div>
         </div>
 
@@ -24,13 +27,17 @@ const Deals = () => {
           <div className=" border-2 border-gray-400 p-4 rounded-xl md:mt-0" style={{backgroundImage: `url(${basePath}/bg_3.png)`, backgroundSize: 'cover'}}>
             <h2 className="font-poppins text-xl sm:text-lg xs:text-base font-semibold mb-2">Small Deal 1</h2>
             <p className="font-poppins text-sm sm:text-xs xs:text-xs mb-4">Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
-            <button className="bg-blue-500 text-white font-poppins py-2 px-4 rounded-lg hover:bg-blue-600 transition-colors duration-200 ease-in-out">Shop Now</button>
+            <Link to="/home/products">
+              <button className="bg-blue-500 text-white font-poppins py-2 px-4 rounded-lg hover:bg-blue-600 transition-colors duration-200 ease-in-out">Shop Now</button>
+            </Link>
           </div>
 
           <div className="border-2 border-gray-400 p-4 rounded-xl mt-4 md:mt-0" style={{backgroundImage: `url(${basePath}/bg_4.png)`, backgroundSize: 'cover'}}>
             <h2 className="font-poppins text-xl sm:text-lg xs:text-base font-semibold mb-2">Small Deal 2</h2>
             <p className="font-poppins text-sm sm:text-xs xs:text-xs mb-4">Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
-            <button className="bg-blue-500 text-white font-poppins py-2 px-4 rounded-lg hover:bg-blue-600 transition-colors duration-200 ease-in-out">Shop Now</button>
+            <Link to="/home/products">
+              <button className="bg-blue-500 text-white font-poppins py-2 px-4 rounded-lg hover:bg-blue-600 transition-colors duration-200 ease-in-out">Shop Now</button>
+            </Link>
           </div>
         </div>
       </div>
