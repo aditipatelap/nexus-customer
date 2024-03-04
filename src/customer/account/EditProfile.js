@@ -113,7 +113,7 @@ const EditProfile = ({ handleEditClick, detailsBunch }) => {
                 {/* details bunch */}
                 <div className="">
                     {detailsBunch.map((detail) => (
-                        <div className="w-full">
+                        <div key={detail.id} className="w-full">
                             {/* put address text before address field */}
                             {detail.id === "building" && 
                                     <p className="font-bold md:text-sm sm:text-sm xs:text-xs mb-2 ">Address:</p>

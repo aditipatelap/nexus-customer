@@ -26,7 +26,7 @@ const ShowProfile = ({ handleEditClick, detailsBunch }) => {
             {/* show details  */}
             <div className="w-full">
                 {detailsBunch.map((detail) => (
-                    <div>
+                    <div key={detail.id}>
                         {/* put address text before address field */}
                         {detail.id === "building" && 
                             <p className="font-bold md:text-sm sm:text-sm xs:text-xs mb-2 ">Address:</p>

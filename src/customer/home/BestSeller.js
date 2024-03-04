@@ -1,4 +1,5 @@
-import React from 'react'
+import React from 'react';
+import { Link } from 'react-router-dom';
 
 const BestSeller = () => {
   const basePath = process.env.PUBLIC_URL + "/images/photo/products";
@@ -8,9 +9,6 @@ const BestSeller = () => {
     {id: 2, src: basePath + "/product.png", title: "Lorem ipsum dolor, sit amet consectetur", price: 1000, discount: 20},
     {id: 3, src: basePath + "/product.png", title: "Lorem ipsum dolor, sit amet consectetur adipisicing elit. Asperiores facilis sed fuga, iusto consequatur eius voluptate error?", price: 1000, discount: 20},
     {id: 4, src: basePath + "/product.png", title: "Lorem ipsum dolor, sit amet consectetur", price: 1000, discount: 20},
-    {id: 5, src: basePath + "/product.png", title: "Lorem ipsum dolor, sit amet consectetur", price: 1000, discount: 20},
-    {id: 6, src: basePath + "/product.png", title: "Lorem ipsum dolor, sit amet consectetur", price: 1000, discount: 20},
-    {id: 7, src: basePath + "/product.png", title: "Lorem ipsum dolor, sit amet consectetur adipisicing elit. Asperiores facilis sed fuga, iusto consequatur eius voluptate error?", price: 1000, discount: 20},
   ];
 
   return (
@@ -18,9 +16,9 @@ const BestSeller = () => {
       {/* Title */}
       <div className="color-3F3939 flex flex-row justify-between">
         <h1 className="font-balsamiq-sans font-bold text-2xl sm:text-xl xs:text-lg text-wrap">BEST SELLER</h1>
-        <a href="#">
+        <Link to="/home/products">
           <p className="font-poppins underline text-black hover:text-blue-600">view all</p>
-        </a>
+        </Link>
       </div>
 
       {/* Items list */}

@@ -4,9 +4,11 @@ import Nav from '../customer/header/Nav';
 import ProfileMenu from './header/ProfileMenu';
 import Footer from '../customer/footer/Footer';
 import { Routes, Route } from 'react-router-dom';
+import { DataProvider } from './context/DataContext';
 import Home from './home/Home';
 import Account from './account/Account';
 import Products from './product/Products';
+import ProductPage from './product/ProductPage';
 
 const Main = () => {
     const headerRef = useRef(null);
@@ -16,14 +18,12 @@ const Main = () => {
 
     const handleProfileClick = () => {
         setIsProfileClicked(!isProfileClicked);
-        // console.log(isProfileClicked);
     };
 
-
+    // get the header height means height of header+nav bar
     useEffect(() => {
         const updateHeaderHeight = () => {
             setHeaderHeight(headerRef.current?.offsetHeight);
-            // console.log(headerHeight);
         }
         
         // Initial height
@@ -41,32 +41,36 @@ const Main = () => {
 
     return (
         <div>
-            {/* fixed header and nav bar  */}
-            <div className="fixed w-full z-10 top-0 " ref={headerRef}>
-                <Header 
-                    isProfileClicked={isProfileClicked}
-                    setIsProfileClicked={setIsProfileClicked}
-                    handleProfileClick={handleProfileClick}
-                />
-                <div style={blurStyle}>
-                    <Nav  />
+            <DataProvider>
+                {/* fixed header and nav bar  */}
+                <div className="fixed w-full z-10 top-0 " ref={headerRef}>
+                    <Header 
+                        isProfileClicked={isProfileClicked}
+                        setIsProfileClicked={setIsProfileClicked}
+                        handleProfileClick={handleProfileClick}
+                    />
+                    <div style={blurStyle}>
+                        <Nav  />
+                    </div>
+                    {isProfileClicked && <ProfileMenu handleProfileClick={handleProfileClick} /> }
                 </div>
-                {isProfileClicked && <ProfileMenu handleProfileClick={handleProfileClick} /> }
-            </div>
 
-            {/* change the pages */}
-            <div style={blurStyle}>
-                <Routes>
-                    <Route path="/" element={ <Home headerHeight={headerHeight}/> } />
-                    <Route path="/account" element={ <Account headerHeight={headerHeight}/> } />
-                    <Route path="/home/products" element={ <Products headerHeight={headerHeight}/> } />
-                </Routes>
-            </div>
+                {/* change the pages */}
+                <div style={blurStyle}>
+                    <Routes>
+                        <Route path="/" element={ <Home headerHeight={headerHeight}/> } />
+                        <Route path="/account" element={ <Account headerHeight={headerHeight}/> } />
+                        <Route path="/home/products" element={ <Products headerHeight={headerHeight}/> } />
+                        <Route path="/home/products/:id" element={ <ProductPage headerHeight={headerHeight}/> } />
+                        {/* <Route path="/*" element={ <Missing headerHeight={headerHeight}/> } /> */}
+                    </Routes>
+                </div>
 
-            {/* fixed footer  */}
-            <div style={blurStyle}>
-                <Footer/>
-            </div>
+                {/* fixed footer  */}
+                <div style={blurStyle}>
+                    <Footer/>
+                </div>
+            </DataProvider>
         </div>
     );
 };

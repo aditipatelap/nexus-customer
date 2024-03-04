@@ -12,7 +12,7 @@ const Home = ({ headerHeight }) => {
       <Category />
       <Deals />
       <BestSeller />
-      <BrandBag />
+      {/* <BrandBag /> */}
     </div>
   )
 }

@@ -4,12 +4,12 @@ import { Link } from "react-router-dom";
 
 const ProfileMenu = ({ handleProfileClick, navigateToLink }) => {
     const menuLinks = [
-        {src:"/account", title:"Your Account"},
-        {src:"#", title:"Track Your Order"},
-        {src:"#", title:"Switch Account"},
-        {src:"#", title:"Sign Out"},
-        {src:"#", title:"Help Center"},
-        {src:"#", title:"Contact Us"},
+        {id:1, src:"/account", title:"Your Account"},
+        {id:2, src:"#", title:"Track Your Order"},
+        {id:3, src:"#", title:"Switch Account"},
+        {id:4, src:"#", title:"Sign Out"},
+        {id:5, src:"#", title:"Help Center"},
+        {id:6, src:"#", title:"Contact Us"},
     ];
 
     return (
@@ -17,7 +17,7 @@ const ProfileMenu = ({ handleProfileClick, navigateToLink }) => {
             <div className="flex justify-end">
                 <div className="flex flex-col items-start bg-white border-2 border-slate-800 rounded-md">
                     {menuLinks.map((link) => (
-                        <div className="px-10 py-1.5 w-full h-full font-poppins md:text-sm sm:text-sm xs:text-xs hover:underline hover:text-white hover:bg-sky-900">
+                        <div key={link.id} className="px-10 py-1.5 w-full h-full font-poppins md:text-sm sm:text-sm xs:text-xs hover:underline hover:text-white hover:bg-sky-900">
                             <Link to={link.src} onClick={handleProfileClick} >{link.title}</Link>
                         </div>
                     ))}
