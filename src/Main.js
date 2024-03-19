@@ -1,14 +1,16 @@
 import React, { useRef, useEffect, useState } from 'react';
-import Header from '../customer/header/Header';
-import Nav from '../customer/header/Nav';
+import Header from './header/Header';
+import Nav from './header/Nav';
 import ProfileMenu from './header/ProfileMenu';
-import Footer from '../customer/footer/Footer';
+import Footer from './footer/Footer';
 import { Routes, Route } from 'react-router-dom';
 import { DataProvider } from './context/DataContext';
 import Home from './home/Home';
 import Account from './account/Account';
 import Products from './product/Products';
 import ProductPage from './product/ProductPage';
+import Login from './login/Login';
+import Signup from './signup/Signup';
 
 const Main = () => {
     const headerRef = useRef(null);
@@ -58,7 +60,7 @@ const Main = () => {
                 {/* change the pages */}
                 <div style={blurStyle}>
                     <Routes>
-                        <Route path="/" element={ <Home headerHeight={headerHeight}/> } />
+                        <Route path="/home" element={ <Home headerHeight={headerHeight}/> } />
                         <Route path="/account" element={ <Account headerHeight={headerHeight}/> } />
                         <Route path="/home/products" element={ <Products headerHeight={headerHeight}/> } />
                         <Route path="/home/products/:id" element={ <ProductPage headerHeight={headerHeight}/> } />

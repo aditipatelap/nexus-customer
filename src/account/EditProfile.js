@@ -1,12 +1,42 @@
 import React, { useContext } from 'react';
-import { TbCameraPlus } from "react-icons/tb";
-import { FaEdit } from "react-icons/fa";
-import DataContext from './DataContext';
+import axios from "axios";
+// import { TbCameraPlus } from "react-icons/tb";
+// import { FaEdit } from "react-icons/fa";
+import DataContext from '../context/DataContext';
 
-const EditProfile = ({ handleEditClick, detailsBunch }) => {
-    const { profilePic, setProfilePic } = useContext(DataContext);
-    const { state } = useContext(DataContext);
+const EditProfile = ({ handleEditClick }) => {
+    const {
+        firstName, setFirstName,
+        lastName, setLastName,
+        email, setEmail,
+        password, setPassword,
+        phoneNumber, setPhoneNumber,
+        gender, setGender,
+        birthday, setBirthday,
+        building, setBuilding,
+        landmark, setLandmark,
+        area, setArea,
+        district, setDistrict,
+        state, setState,
+    } = useContext(DataContext);
 
+    const detailsBunch = [
+        { id: "firstName", value: firstName, method: setFirstName, placeholder: "First Name", type: "text" },
+        { id: "lastName", value: lastName, method: setLastName, placeholder: "Last Name", type: "text" },
+        { id: "email", value: email, method: setEmail, placeholder: "Email", type: "text" },
+        { id: "password", value: password, method: setPassword, placeholder: "Password", type: "text" },
+        { id: "phoneNumber", value: phoneNumber, method: setPhoneNumber, placeholder: "Phone Number", type: "text" },
+        { id: "gender", value: gender, method: setGender, placeholder: "Gender", type: "select" },
+        { id: "birthday", value: birthday, method: setBirthday, placeholder: "Birthday", type: "date" },
+    
+        // address 
+        { id: "building", value: building, method: setBuilding, placeholder: "Building no. & name", type: "text" },
+        { id: "landmark", value: landmark, method: setLandmark, placeholder: "Landmark", type: "text" },
+        { id: "area", value: area, method: setArea, placeholder: "Area/Street", type: "text" },
+        { id: "state", value: state, method: setState, placeholder: "State", type: "select" },
+        { id: "district", value: district, method: setDistrict, placeholder: "District", type: "select" },
+      ];
+    
     const genderList = [
         "Female", "Male", "Other", "Prefer not"
     ];
@@ -74,11 +104,30 @@ const EditProfile = ({ handleEditClick, detailsBunch }) => {
         return `${day}-${month}-${year}`;
     };
 
+    const handleEditProfile = async () => {
+        const data = { firstName, lastName, email, password, phoneNumber, gender, birthday, building, landmark, area, district, state };
+        try {  
+            const response = await axios.post("http://localhost:8000/update", data);
+            if(response.data.status === "updated") {
+                alert("Your profile has been updated");
+                handleEditClick();
+            }
+            else if (response.data.status === "fail") {
+                alert("Something went wrong");
+                handleEditClick();
+            }
+        }
+        catch (error) {
+            console.error(error);
+            handleEditClick();
+        }
+    }
+    
     return (
         <div>
-            <form id="customerDeatils">
+            <form id="editCustomerDetails" action="POST" onSubmit={(e) => e.preventDefault()}>
                 {/* profile picture  */}
-                <div className=" flex flex-col items-center w-full">
+                {/* <div className=" flex flex-col items-center w-full">
                     {!profilePic && 
                         <div className="relative border-4 border-black rounded-full">
                             <div className="bg-slate-300 p-16 md:p-12 sm:p-10 xs:p-9 rounded-full">
@@ -109,7 +158,8 @@ const EditProfile = ({ handleEditClick, detailsBunch }) => {
                         </div>
                     }
                     <p className="font-poppins py-2">Profile Picture</p>
-                </div>
+                </div> */}
+
                 {/* details bunch */}
                 <div className="">
                     {detailsBunch.map((detail) => (
@@ -120,7 +170,7 @@ const EditProfile = ({ handleEditClick, detailsBunch }) => {
                             }
                             {/* show the details based on their type */}
                             <div className="flex flex-row mb-6 md:text-sm sm:text-sm xs:text-xs">
-                                <label htmlFor={detail.id} className="text-nowrap">{detail.label}:</label>
+                                <label htmlFor={detail.id} className="text-nowrap">{detail.placeholder}:</label>
                                 <div className="w-full ml-2">
                                     {detail.type === "select" &&
                                         <select id={detail.id} value={detail.value} onChange={(e) => detail.method(e.target.value)} className="border-2 border-gray-300"  style={{ width: '100%', maxWidth: '100%' }}>
@@ -129,14 +179,14 @@ const EditProfile = ({ handleEditClick, detailsBunch }) => {
                                                     <option value={gender}>{gender}</option>
                                                 ))
                                             }
-                                            {detail.id === "district" &&
-                                                districtsList[state].map((district) => (
-                                                    <option value={district}>{district}</option>
-                                                ))
-                                            }
                                             {detail.id === "state" && 
                                                 statesList.map((state) => (
                                                     <option value={state}>{state}</option>
+                                                    ))
+                                            }
+                                            {detail.id === "district" &&
+                                                districtsList[state].map((district) => (
+                                                    <option value={district}>{district}</option>
                                                 ))
                                             }
                                         </select>
@@ -149,7 +199,7 @@ const EditProfile = ({ handleEditClick, detailsBunch }) => {
                                             autoFocus={detail.id === "firstName"}
                                             className="border-b-2 border-gray-300 px-2 w-full"
                                             value={detail.value}
-                                            onChange={(e) => detail.method(e.target.value) }
+                                            onChange={(e) => detail.id !== "email" && detail.method(e.target.value)}
                                         />                                
                                     }
                                     {detail.type === "date" &&
@@ -175,7 +225,7 @@ const EditProfile = ({ handleEditClick, detailsBunch }) => {
                 <button 
                     type="submit"
                     className="px-20 py-3 md:px-14 md:py-2 sm:px-14 sm:py-2 xs:px-14 xs:py-2 rounded-lg shadow-lg font-podkova bg-sky-900 text-white text-2xl md:text-xl sm:text-xl xs:text-xl"
-                    onClick={() => handleEditClick}
+                    onClick={() => handleEditProfile()}
                 >
                     SAVE
                 </button>

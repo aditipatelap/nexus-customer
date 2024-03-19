@@ -6,14 +6,14 @@ import { FaHeart } from "react-icons/fa6";
 import { IoBagHandle } from "react-icons/io5";
 import { MdAccountCircle } from "react-icons/md";
 
-const Header = ({ isProfileClicked, setIsProfileClicked, handleProfileClick }) => {
+const Header = ({ handleProfileClick }) => {
   const logoPath = process.env.PUBLIC_URL + "/images/logo/logo_3x.png";
   const { search, setSearch } = useContext(DataContext);
 
   return (
     <header className="max-w-full px-6 py-3 h-fit header-background text-white flex items-center">
         {/* Logo */} 
-        <Link to="/" className="w-8 h-8 sm:h-10 sm:w-10 md:h-11 md-w-11 lg:h-12 lg:w-12 xl:h-14 xl:w-14 2xl:h-20 2xl:w-20">
+        <Link to="/home" className="w-8 h-8 sm:h-10 sm:w-10 md:h-11 md-w-11 lg:h-12 lg:w-12 xl:h-14 xl:w-14 2xl:h-20 2xl:w-20">
             <img src={logoPath} alt="Nexus" className="h-full w-full object-contain"/>
         </Link>
 
@@ -24,7 +24,7 @@ const Header = ({ isProfileClicked, setIsProfileClicked, handleProfileClick }) =
             {/* search input field */}
             <input
               type="text"
-              id="text"
+              id="search"
               placeholder="Search here"
               role="searchbox"
               className="pl-10 py-2 w-full rounded-full bg-white text-black font-poppins border border-gray-300"

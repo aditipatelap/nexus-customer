@@ -1,4 +1,5 @@
-import React from 'react'
+import React from 'react';
+import { Link } from 'react-router-dom';
 
 const Coupons = () => {
   const basePath = process.env.PUBLIC_URL + "/images/photo/backgrounds";
@@ -15,7 +16,13 @@ const Coupons = () => {
 
   return (
     <div className="font-poppins mb-8">
-      <p className="py-6 sm:py-3 xs:py-3 md:text-sm sm:text-sm xs:text-xs">Your Account &gt; Coupons/ Rewards </p>
+      <p className="py-6 sm:py-3 xs:py-3 md:text-sm sm:text-sm xs:text-xs">
+        <Link to="/home" className='hover:underline'>Home</Link>
+        &nbsp; &gt; &nbsp; 
+        <Link to="/account" className='hover:underline'>Your Account</Link> 
+        &nbsp; &gt; &nbsp; 
+        <Link to="#" className='hover:underline'>Coupons/ Rewards</Link> 
+      </p>
       <div className="grid grid-cols-4 lg:grid-cols-3 md:grid-cols-2 sm:grid-cols-2 xs:grid-cols-2 mt-3 md:mt-2 gap-3">
         {couponsList.map((coupon) => (
           <div className="border border-black rounded-lg p-3 space-y-1" style={{backgroundImage: `url(${basePath}/bg_2.png)`, backgroundSize: 'cover'}}>
