@@ -14,7 +14,7 @@ const ProfileMenu = ({ handleProfileClick }) => {
     return (
         <div className="fixed z-20 top-16 right-4" onMouseLeave={handleProfileClick} onWheel={handleProfileClick}>
             <div className="flex justify-end">
-                <div className="flex flex-col items-start bg-white border-2 border-slate-800 rounded-md">
+                <div className="flex flex-col items-start bg-white border-2 border-slate-800 rounded-md">    
                     {menuLinks.map((link) => (
                         <div key={link.id} className="px-10 py-1.5 w-full h-full font-poppins md:text-sm sm:text-sm xs:text-xs hover:underline hover:text-white hover:bg-sky-900">
                             <Link 

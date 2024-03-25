@@ -7,14 +7,16 @@ const Delete = () => {
   const [ textInput, setTextInput ]  = useState("");
   const navigate = useNavigate();
   const { 
-    setFirstName, setLastName, 
-    email, setEmail, setPassword,
-    setPhoneNumber, setGender, setBirthday, 
-    setBuilding, setLandmark, setArea, setDistrict, setState 
+    setCustomerId, setProfilePic, setFirstName, setLastName, 
+    email, setEmail, setPassword, setPhoneNumber, setGender, setBirthday, 
+    setBuilding, setLandmark, setArea, setDistrict, setState,
+    setFavoriteList, setBagList, setOrdersList,
   } = useContext(DataContext);
 
 
   const handleUserData = () => {
+    setCustomerId();
+    setProfilePic();
     setFirstName('');
     setLastName('');
     setEmail('');
@@ -27,12 +29,15 @@ const Delete = () => {
     setArea('');
     setDistrict('');
     setState('');
+    setFavoriteList([]);
+    setBagList([]);
+    setOrdersList([]);
  }
 
   const handleDelete = async () => {
     if (textInput === "DELETE") {
       try {
-        const response = await axios.post("http://localhost:8000/delete", { email } );
+        const response = await axios.delete("http://localhost:8000/customer/delete", { data: { email } });
         if (response.data.status === "deleted") {
           handleUserData();
           alert("Your Account has been deleted");

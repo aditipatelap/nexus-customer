@@ -1,16 +1,42 @@
-import React, { useContext } from 'react'
+import React, { useContext, useEffect } from 'react'
 import { Link, useNavigate } from 'react-router-dom';
 import DataContext from '../context/DataContext';
 import axios from "axios";
 
-const Signup = () => {
+const Auth = () => {
     const navigate = useNavigate();
     const logoPath = process.env.PUBLIC_URL + "/images/logo/logo_3x.png";
-    const { email, setEmail } = useContext(DataContext);
+    const { 
+        email, setEmail, 
+        setProfilePic, setCustomerId, setFirstName, setLastName, 
+        setPassword, setPhoneNumber, setGender, setBirthday, 
+        setBuilding, setLandmark, setArea, setDistrict, setState,
+        setFavoriteList, setBagList, setOrdersList,
+    } = useContext(DataContext);
 
+    useEffect(() => {
+        setCustomerId();
+        setProfilePic();
+        setFirstName('');
+        setLastName('');
+        setEmail('');
+        setPassword('');
+        setPhoneNumber('');
+        setGender("Female");
+        setBirthday('');
+        setBuilding('');
+        setLandmark('');
+        setArea('');
+        setDistrict("Ahmadabad");
+        setState("Gujarat");
+        setFavoriteList([]);
+        setBagList([]);
+        setOrdersList([]);
+    }, [])
+    
     const handleSignup = async () => {
         try {
-            const response = await axios.post("http://localhost:8000/signup", {email});
+            const response = await axios.post("http://localhost:8000/customer/auth", { email });
             if(response.data.status === "exist"){
                 setEmail('');
                 alert("User already exist");
@@ -101,4 +127,4 @@ const Signup = () => {
     )
 }
 
-export default Signup
+export default Auth;

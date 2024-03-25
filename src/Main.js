@@ -9,8 +9,6 @@ import Home from './home/Home';
 import Account from './account/Account';
 import Products from './product/Products';
 import ProductPage from './product/ProductPage';
-import Login from './login/Login';
-import Signup from './signup/Signup';
 
 const Main = () => {
     const headerRef = useRef(null);

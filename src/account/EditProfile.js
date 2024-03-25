@@ -1,11 +1,14 @@
 import React, { useContext } from 'react';
 import axios from "axios";
-// import { TbCameraPlus } from "react-icons/tb";
-// import { FaEdit } from "react-icons/fa";
+import { TbCameraPlus } from "react-icons/tb";
+import { MdDelete } from "react-icons/md";
+import { FaEdit } from "react-icons/fa";
 import DataContext from '../context/DataContext';
 
 const EditProfile = ({ handleEditClick }) => {
     const {
+        setCustomerId,
+        profilePic, setProfilePic,
         firstName, setFirstName,
         lastName, setLastName,
         email, setEmail,
@@ -104,12 +107,30 @@ const EditProfile = ({ handleEditClick }) => {
         return `${day}-${month}-${year}`;
     };
 
+    const handleUserData = (user) => {
+        setCustomerId(user._id);
+        setProfilePic(user.profilePic);
+        setFirstName(user.firstName);
+        setLastName(user.lastName);
+        setEmail(user.email);
+        setPassword(user.password);
+        setPhoneNumber(user.phoneNumber);
+        setGender(user.gender);
+        setBirthday(user.birthday);
+        setBuilding(user.building);
+        setLandmark(user.landmark);
+        setArea(user.area);
+        setDistrict(user.district);
+        setState(user.state);
+    }
+
     const handleEditProfile = async () => {
-        const data = { firstName, lastName, email, password, phoneNumber, gender, birthday, building, landmark, area, district, state };
+        const data = { profilePic, firstName, lastName, email, password, phoneNumber, gender, birthday, building, landmark, area, district, state };
         try {  
-            const response = await axios.post("http://localhost:8000/update", data);
+            const response = await axios.put("http://localhost:8000/customer/update/profile", data);
             if(response.data.status === "updated") {
                 alert("Your profile has been updated");
+                handleUserData(response.data.user);
                 handleEditClick();
             }
             else if (response.data.status === "fail") {
@@ -122,12 +143,36 @@ const EditProfile = ({ handleEditClick }) => {
             handleEditClick();
         }
     }
+
+    const handleDeleteProfilePic = () => {
+        setProfilePic("");
+    }
+
+    const convertToBase64 = (e) => {
+        const file = e.target.files[0];
+        const maxSizeInBytes = 100 * 1024; // 100 KB
+        if (file && file.size <= maxSizeInBytes) {
+            var reader = new FileReader();
+            reader.readAsDataURL(file);
+            reader.onload = () => {
+                setProfilePic(reader.result); // base64encoded string
+            }
+            reader.onerror = (error) => {
+                console.error(error);
+            }
+        } 
+        else {
+            alert('Please select an image smaller than 100 KB.');
+            // Clear the input value to allow the user to select another file
+            e.target.value = null;
+        }
+    }
     
     return (
         <div>
             <form id="editCustomerDetails" action="POST" onSubmit={(e) => e.preventDefault()}>
                 {/* profile picture  */}
-                {/* <div className=" flex flex-col items-center w-full">
+                <div className=" flex flex-col items-center w-full">
                     {!profilePic && 
                         <div className="relative border-4 border-black rounded-full">
                             <div className="bg-slate-300 p-16 md:p-12 sm:p-10 xs:p-9 rounded-full">
@@ -141,7 +186,7 @@ const EditProfile = ({ handleEditClick }) => {
                                 id="fileInput"
                                 type="file"
                                 accept="image/*"
-                                onChange={(e) => alert("image cannot upload so you cannot see. 😝 \n Sorry! I'll solve this soon... 🎉😀")}
+                                onChange={convertToBase64}
                                 style={{ display: 'none' }}
                             />
                             </div>
@@ -149,16 +194,21 @@ const EditProfile = ({ handleEditClick }) => {
                     }
                     {profilePic &&
                         <div className="relative border-4 border-black rounded-full">
-                            <div className="h-40 w-40 md:h-32 md:w-32 sm:h-32 sm:w-32 xs:h-32 xs:w-32 rounded-full overflow-hidden">
-                                <img src={profilePic} alt="profile picture"  className="bg-slate-400 w-full h-full object-cover"/>
+                            <div className="h-48 w-48 md:h-40 md:w-40 sm:h-40 sm:w-40 xs:h-40 xs:w-40 rounded-full overflow-hidden">
+                                <img src={profilePic} alt=""  className="bg-slate-400 w-full h-full object-cover"/>
                             </div>
                             <div className="absolute bottom-2 right-2 md:bottom-1 md:right-1 sm:bottom-1 sm:right-1 xs:bottom-1 xs:right-1 bg-black p-2 rounded-full">
-                                <FaEdit className="text-white" />
+                                <label htmlFor="fileInput" className="cursor-pointer">
+                                    <MdDelete className="text-white" onClick={handleDeleteProfilePic} />
+                                </label>
                             </div>
                         </div>
                     }
-                    <p className="font-poppins py-2">Profile Picture</p>
-                </div> */}
+                    <p className="font-poppins py-2">Profile Picture
+                        <h6 className="font-poppins text-xs text-[#E23232] text-center"> (max size: 100 KB)</h6>
+                    </p>
+                </div>
+
 
                 {/* details bunch */}
                 <div className="">

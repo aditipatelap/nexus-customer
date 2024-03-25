@@ -1,12 +1,16 @@
 import React, { useContext } from 'react';
 import { useNavigate } from 'react-router-dom';
 import axios from "axios";
+import { TbCameraPlus } from "react-icons/tb";
+import { FaEdit } from "react-icons/fa";
 import DataContext from '../context/DataContext';
 
 const Register = () => {
     const navigate = useNavigate();
     const logoPath = process.env.PUBLIC_URL + "/images/logo/logo_3x.png";
     const {
+        setCustomerId,
+        profilePic, setProfilePic,
         firstName, setFirstName,
         lastName, setLastName,
         email, setEmail,
@@ -19,6 +23,7 @@ const Register = () => {
         area, setArea,
         district, setDistrict,
         state, setState,
+        setFavoriteList, setBagList, setOrdersList,
     } = useContext(DataContext);
 
     const detailsBunch = [
@@ -94,12 +99,35 @@ const Register = () => {
         "Puducherry (UT)": ["Karaikal", "Mahe", "Puducherry", "Yanam"],
     };
 
+    const handleUserData = (user) => {
+        setCustomerId(user._id);
+        setProfilePic(user.profilePic);
+        setFirstName(user.firstName);
+        setLastName(user.lastName);
+        setEmail(user.email);
+        setPassword(user.password);
+        setPhoneNumber(user.phoneNumber);
+        setGender(user.gender);
+        setBirthday(user.birthday);
+        setBuilding(user.building);
+        setLandmark(user.landmark);
+        setArea(user.area);
+        setDistrict(user.district);
+        setState(user.state);
+        setFavoriteList(user.favorite);
+        setBagList(user.bag);
+        setOrdersList(user.orders);
+    }
+
+
     const handleRegister = async () => {
-        const data = { firstName, lastName, email, password, phoneNumber, gender, birthday, building, landmark, area, district, state };
-        try {  
-            const response = await axios.post("http://localhost:8000/register", data);
+        const data = { profilePic, firstName, lastName, email, password, phoneNumber, gender, birthday, building, landmark, area, district, state };
+        try {
+            console.log(data);  
+            const response = await axios.post("http://localhost:8000/customer/register", data);
             if(response.data.status === "added") {
                 alert("Thank you for registering");
+                handleUserData(response.data.user);
                 navigate("/home");
             }
             else if (response.data.status === "fail") {
@@ -108,6 +136,26 @@ const Register = () => {
         }
         catch (error) {
             console.error(error);
+        }
+    }
+
+    const convertToBase64 = (e) => {
+        const file = e.target.files[0];
+        const maxSizeInBytes = 100 * 1024; // 100 KB
+        if (file && file.size <= maxSizeInBytes) {
+            var reader = new FileReader();
+            reader.readAsDataURL(file);
+            reader.onload = () => {
+                setProfilePic(reader.result); // base64encoded string
+            }
+            reader.onerror = (error) => {
+                console.error(error);
+            }
+        } 
+        else {
+            alert('Please select an image smaller than 100 KB.');
+            // Clear the input value to allow the user to select another file
+            e.target.value = null;
         }
     }
 
@@ -136,6 +184,51 @@ const Register = () => {
                 We love to join with you. Please, fill the below details.
             </p>
             <form id="registerPage" action="POST" onSubmit={(e) => e.preventDefault()}>
+                {/* profile picture  */}
+                <div className=" flex flex-col items-center w-full mb-5">
+                    {!profilePic &&
+                        <div className="relative border-4 border-black rounded-full">
+                            <div className="bg-slate-300 p-16 md:p-12 sm:p-10 xs:p-9 rounded-full">
+                                <TbCameraPlus className="text-6xl" />
+                            </div>
+                            <div className="absolute bottom-2 right-2 md:bottom-1 md:right-1 sm:bottom-1 sm:right-1 xs:bottom-1 xs:right-1 bg-black p-2 rounded-full">
+                            <label htmlFor="fileInput" className="cursor-pointer">
+                                <FaEdit className="text-white" />
+                            </label>
+                            <input
+                                id="fileInput"
+                                type="file"
+                                accept="image/*"
+                                onChange={convertToBase64}
+                                style={{ display: 'none' }}
+                            />
+                            </div>
+                        </div>    
+                    }
+                    {profilePic && 
+                        <div className="relative border-4 border-black rounded-full">
+                            <div className="h-48 w-48 md:h-40 md:w-40 sm:h-40 sm:w-40 xs:h-40 xs:w-40 rounded-full overflow-hidden">
+                                <img src={profilePic} alt=""  className="bg-slate-400 w-full h-full object-cover"/>
+                            </div>
+                            <div className="absolute bottom-2 right-2 md:bottom-1 md:right-1 sm:bottom-1 sm:right-1 xs:bottom-1 xs:right-1 bg-black p-2 rounded-full">
+                                <label htmlFor="fileInput" className="cursor-pointer">
+                                    <FaEdit className="text-white" />
+                                </label>
+                                <input
+                                    id="fileInput"
+                                    type="file"
+                                    accept="image/*"
+                                    onChange={convertToBase64}
+                                    style={{ display: 'none' }}
+                                />
+                            </div>
+                        </div>
+                    }
+                    <p className="font-poppins py-2">Profile Picture
+                        <h6 className="font-poppins text-xs text-[#E23232] text-center"> (max size: 100 KB)</h6>
+                    </p>
+                </div>
+
                 <div className="w-full px-5">
                     {/* details  */}
                     {detailsBunch.map((detail) => (

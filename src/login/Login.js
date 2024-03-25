@@ -7,31 +7,57 @@ const Login = () => {
     const navigate = useNavigate();
     const logoPath = process.env.PUBLIC_URL + "/images/logo/logo_3x.png";
     const { 
-        setFirstName, setLastName, 
+        setProfilePic, setCustomerId, setFirstName, setLastName, 
         email, setEmail, 
         password, setPassword, 
         setPhoneNumber, setGender, setBirthday, 
-        setBuilding, setLandmark, setArea, setDistrict, setState 
+        setBuilding, setLandmark, setArea, setDistrict, setState,
+        setFavoriteList, setBagList, setOrdersList,
     } = useContext(DataContext);
 
+    useEffect(() => {
+        setCustomerId();
+        setProfilePic();
+        setFirstName('');
+        setLastName('');
+        setEmail('');
+        setPassword('');
+        setPhoneNumber('');
+        setGender("Female");
+        setBirthday('');
+        setBuilding('');
+        setLandmark('');
+        setArea('');
+        setDistrict("Ahmadabad");
+        setState("Gujarat");
+        setFavoriteList([]);
+        setBagList([]);
+        setOrdersList([]);
+    }, [])
+
     const handleUserData = (user) => {
-       setFirstName(user.firstName);
-       setLastName(user.lastName);
-       setEmail(user.email);
-       setPassword(user.password);
-       setPhoneNumber(user.phoneNumber);
-       setGender(user.gender);
-       setBirthday(user.birthday);
-       setBuilding(user.building);
-       setLandmark(user.landmark);
-       setArea(user.area);
-       setDistrict(user.district);
-       setState(user.state);
+        setCustomerId(user._id);
+        setProfilePic(user.profilePic);
+        setFirstName(user.firstName);
+        setLastName(user.lastName);
+        setEmail(user.email);
+        setPassword(user.password);
+        setPhoneNumber(user.phoneNumber);
+        setGender(user.gender);
+        setBirthday(user.birthday);
+        setBuilding(user.building);
+        setLandmark(user.landmark);
+        setArea(user.area);
+        setDistrict(user.district);
+        setState(user.state);
+        setFavoriteList(user.favorite);
+        setBagList(user.bag);
+        setOrdersList(user.orders);
     }
 
     const handleLogin = async () => {
         try {
-            const response = await axios.post("http://localhost:8000/login", {email, password} );
+            const response = await axios.post("http://localhost:8000/customer/login", {email, password} );
             setEmail('');
             setPassword('');
             const { data } = response;

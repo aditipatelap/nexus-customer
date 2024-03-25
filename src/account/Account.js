@@ -1,19 +1,13 @@
-import React, { useState, useContext } from 'react';
+import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import Profile from './Profile';
 import Coupons from './Coupons';
 import Delete from './Delete';
-import DataContext from '../context/DataContext';
 
 const Account = () => {
     const [currentPage, setCurrentPage] = useState("profile");
     const navigate = useNavigate();
-    const { 
-        setFirstName, setLastName, setEmail, setPassword, 
-        setPhoneNumber, setGender, setBirthday, 
-        setBuilding, setLandmark, setArea, setDistrict, setState 
-    } = useContext(DataContext);
-
+    
     const links = [
         {title: "Profile", PageName: "profile"},
         {title: "Coupons/ Rewards", PageName: "coupons"},
@@ -21,24 +15,8 @@ const Account = () => {
         {title: "Sign Out", PageName: "signout"},
     ];
 
-    const handleSignOut = () => {
-        setFirstName('');
-        setLastName('');
-        setEmail('');
-        setPassword('');
-        setPhoneNumber('');
-        setGender('');
-        setBirthday('');
-        setBuilding('');
-        setLandmark('');
-        setArea('');
-        setDistrict('');
-        setState('');
-    }
-
     const handlePage = (page) => {
         if (page === "signout") {
-            handleSignOut();
             navigate("/");
         } else {
             setCurrentPage(page);

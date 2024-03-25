@@ -2,7 +2,7 @@ import React from "react";
 import { Routes, Route } from 'react-router-dom';
 import { DataProvider } from './context/DataContext';
 import Login from "./login/Login";
-import Signup from "./signup/Signup";
+import Auth from "./signup/Auth";
 import Register from "./signup/Register";
 import Home from "./home/Home";
 import Account from "./account/Account";
@@ -19,7 +19,7 @@ function App() {
       <DataProvider>
         <Routes>
           <Route path="/" element={ <Login /> } />
-          <Route path="/signup" element={ <Signup /> } />
+          <Route path="/signup" element={ <Auth /> } />
           <Route path="/register" element={ <Register /> } />
           <Route path="/home" element={ <Home /> } />
           <Route path="/account" element={ <Account /> } />

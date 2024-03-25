@@ -4,6 +4,8 @@ import useAxiosFetch from '../hooks/useAxiosFetch';
 const DataContext = createContext({});
 
 export const DataProvider = ({ children }) => {
+    const [customerId, setCustomerId] = useState();
+    const [profilePic, setProfilePic] = useState("");
     const [firstName, setFirstName] = useState('');
     const [lastName, setLastName] = useState('');
     const [email, setEmail] = useState('');
@@ -17,6 +19,9 @@ export const DataProvider = ({ children }) => {
     const [area, setArea] = useState('');
     const [district, setDistrict] = useState("Ahmadabad");
     const [state, setState] = useState("Gujarat");
+    const [favoriteList, setFavoriteList] = useState([]);
+    const [bagList, setBagList] = useState([]);
+    const [ordersList, setOrdersList] = useState([]);
 
     const [products, setProducts] = useState([]);
     const [search, setSearch] = useState('');
@@ -30,6 +35,8 @@ export const DataProvider = ({ children }) => {
     
     return (
         <DataContext.Provider value={{
+            customerId, setCustomerId,
+            profilePic, setProfilePic,
             firstName, setFirstName,
             lastName, setLastName,
             email, setEmail,
@@ -42,6 +49,9 @@ export const DataProvider = ({ children }) => {
             area, setArea,
             district, setDistrict,
             state, setState,
+            favoriteList, setFavoriteList,
+            bagList, setBagList,
+            ordersList, setOrdersList,
             
             products, fetchError, isLoading,
             search, setSearch,

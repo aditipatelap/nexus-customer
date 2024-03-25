@@ -1,9 +1,13 @@
 import React, { useContext } from 'react';
-// import { TbCameraPlus } from "react-icons/tb";
+import { TbCameraPlus } from "react-icons/tb";
 import DataContext from '../context/DataContext';
 
 const ShowProfile = ({ handleEditClick }) => {
-    const{ firstName, lastName, email, password, phoneNumber, gender, birthday, building, landmark, area, district, state } = useContext(DataContext);
+    const {
+        profilePic, firstName,  lastName, email, password, phoneNumber, gender, 
+        birthday, building, landmark, area, district, state,
+    } = useContext(DataContext);
+
     
     const detailsBunch = [
         { id: "firstName", value: firstName, placeholder: "First Name"},
@@ -25,7 +29,7 @@ const ShowProfile = ({ handleEditClick }) => {
     return (
         <div>
             {/* add profile image */}
-            {/* <div className="flex flex-col items-center w-full mb-6">
+            <div className="flex flex-col items-center w-full mb-6">
                 {!profilePic && 
                     <div className="bg-slate-300 p-16 md:p-12 sm:p-10 xs:p-9 border-4 border-black rounded-full">
                         <TbCameraPlus className="text-6xl" />
@@ -33,12 +37,12 @@ const ShowProfile = ({ handleEditClick }) => {
                 }
                 {profilePic &&
                     <div className="border-4 border-black rounded-full">
-                        <div className="h-44 w-44 md:h-32 md:w-32 sm:h-32 sm:w-32 xs:h-32 xs:w-32 rounded-full overflow-hidden border-black">
-                            <img src={profilePic} alt="profile picture"  className="bg-slate-400 w-full h-full object-cover"/>
+                        <div className="h-48 w-48 md:h-40 md:w-40 sm:h-40 sm:w-40 xs:h-40 xs:w-40 rounded-full overflow-hidden">
+                            <img src={profilePic}  alt="" className="bg-slate-400 w-full h-full object-cover"/>
                         </div>
                     </div>
                 }
-            </div> */}
+            </div>
 
             {/* show details  */}
             <div className="w-full">
