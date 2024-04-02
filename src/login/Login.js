@@ -13,6 +13,7 @@ const Login = () => {
         setPhoneNumber, setGender, setBirthday, 
         setBuilding, setLandmark, setArea, setDistrict, setState,
         setFavoriteList, setBagList, setOrdersList,
+        products, setProducts,
     } = useContext(DataContext);
 
     useEffect(() => {
@@ -64,7 +65,12 @@ const Login = () => {
             if (data.status === "success") {
                 const user = data.user;
                 handleUserData(user);
-                navigate("/home");
+                const res = await axios.get("http://localhost:8000/product/get/all");
+                if(res.data.status === "success") {
+                    const prdcts = res.data.products;
+                    setProducts(prdcts);
+                    navigate("/home");
+                }
             }
             else if (data.status === "incorrect") {
                 alert("Wrong password");
@@ -127,7 +133,7 @@ const Login = () => {
                             className="font-podkova bg-[#285F88] rounded-md p-4 px-10 sm:px-6 xs:px-6 mb-8 hover:shadow-lg hover:shadow-slate-400 text-center text-white text-2xl sm:text-xl xs:text-xl font-semibold"
                             onClick={() => handleLogin()}
                         >
-                            SIGN IN
+                            LOG IN
                         </button>
                     </div>
                 </form>

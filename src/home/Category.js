@@ -32,13 +32,13 @@ const Category = () => {
     return (
         <div className="px-6 mb-8">
             {/* Tittle */}
-            <div className="color-3F3939 flex flex-row justify-between">
+            <div className="text-[#3F3939] flex flex-row justify-between">
                 <h1  className="font-balsamiq-sans font-bold text-2xl sm:text-xl xs:text-lg">SHOP BY CATEGORY</h1>
             </div>
             {/* categories icons and it's name*/}
             <div className="grid grid-cols-5 lg:grid-cols-4 md:grid-cols-3 sm:grid-cols-2 xs:grid-cols-2 gap-5 mt-5">
                 {categoriesList.map((category) => (
-                    <Link to="/home/products" key={category.id} >
+                    <Link to={`/home/products/${category.name}`} key={category.id} >
                         <div className="bg-white border-2 border-gray-400 rounded-xl p-2 pt-4 shadow-lg h-44 flex flex-col items-center justify-center category-hover">
                             <div className='m-2 mb-0'>
                                 {React.cloneElement(category.icon, { size: 50 })}

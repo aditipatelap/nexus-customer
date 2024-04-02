@@ -19,7 +19,7 @@ const BrandBag = () => {
   return (
     <div className="mx-6 mb-8">
       {/* Title */}
-      <div className="color-3F3939 flex flex-row justify-between">
+      <div className="text-[#3F3939] flex flex-row justify-between">
         <h1 className="font-balsamiq-sans font-bold text-2xl">BRAND TO BAG</h1>
         <a href="#">
           <p className="font-poppins underline text-black hover:text-blue-600">view all</p>
@@ -29,7 +29,7 @@ const BrandBag = () => {
       <div className="grid grid-cols-5 md:grid-cols-4 sm:grid-cols-3 xs:grid-cols-2 gap-5 mt-5">
         {brandList.map((brand) => (
           <Link to="/home/products" key={brand.id}>
-            <div className="bg-white border-2 border-gray-400 rounded-xl p-4 shadow-lg h-44 md:h-40 sm:h-36 xs:h-32 brand-hover">
+            <div className="bg-white border-2 border-gray-400 rounded-xl p-4 shadow-lg h-44 md:h-40 sm:h-36 xs:h-32 hover:bg-[#e5e7eb] focus:bg-[#e5e7eb]">
                 <img src={brand.logo} alt={brand.name} title={"Brand: " + brand.name} className="h-full w-full object-contain" />
             </div>
           </Link>

@@ -4,20 +4,6 @@
 @import url('https://fonts.googleapis.com/css2?family=Poly:ital@0;1&display=swap');
 
 
-.header-background {
-    background-color: #deeef7;
-}
-
-.nav-color {
-    background-color: #104167;
-}
-
-.nav-link:hover,
-.nav-link:focus{
-    color: #f5efef;
-    text-decoration: underline;
-}
-
 .font-poppins {
     font-family: 'Poppins';
 }
@@ -33,9 +19,6 @@
 .font-poly {
     font-family: "Poly";
 }
-.color-3F3939 {
-    color: #3F3939;
-}
 
 .category-hover:hover,
 .category-hover:focus {
@@ -44,13 +27,6 @@
     font-size: xx-large;
 }
 
-.item-hover:hover,
-.item-hover:focus {
-    background-color: rgb(229 231 235);
-    color: rgb(101 163 13);
-}
-
-.brand-hover:hover,
-.brand-hover:focus {
-    background-color: rgb(229 231 235);
+.min-h--screen {
+    min-height: 62vh; /* Minimum height equal to the height of the viewport */
 }

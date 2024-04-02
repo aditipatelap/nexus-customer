@@ -2,6 +2,7 @@ import React, { useContext } from 'react';
 import { useNavigate } from 'react-router-dom';
 import axios from "axios";
 import { TbCameraPlus } from "react-icons/tb";
+import { MdDelete } from "react-icons/md";
 import { FaEdit } from "react-icons/fa";
 import DataContext from '../context/DataContext';
 
@@ -138,6 +139,10 @@ const Register = () => {
             console.error(error);
         }
     }
+    
+    const handleDeleteProfilePic = () => {
+        setProfilePic("");
+    }
 
     const convertToBase64 = (e) => {
         const file = e.target.files[0];
@@ -200,7 +205,7 @@ const Register = () => {
                                 type="file"
                                 accept="image/*"
                                 onChange={convertToBase64}
-                                style={{ display: 'none' }}
+                                className="hidden"
                             />
                             </div>
                         </div>    
@@ -212,15 +217,8 @@ const Register = () => {
                             </div>
                             <div className="absolute bottom-2 right-2 md:bottom-1 md:right-1 sm:bottom-1 sm:right-1 xs:bottom-1 xs:right-1 bg-black p-2 rounded-full">
                                 <label htmlFor="fileInput" className="cursor-pointer">
-                                    <FaEdit className="text-white" />
+                                    <MdDelete className="text-white" onClick={handleDeleteProfilePic} />
                                 </label>
-                                <input
-                                    id="fileInput"
-                                    type="file"
-                                    accept="image/*"
-                                    onChange={convertToBase64}
-                                    style={{ display: 'none' }}
-                                />
                             </div>
                         </div>
                     }
@@ -275,6 +273,7 @@ const Register = () => {
                                             type={detail.type}
                                             required
                                             placeholder={detail.placeholder}
+                                            autoComplete={detail.id === "email" || detail.id === "password" ? "off": "on"}
                                             autoFocus={detail.id === "firstName"}
                                             className="border-b-2 border-gray-300 px-2 w-full"
                                             value={detail.value}

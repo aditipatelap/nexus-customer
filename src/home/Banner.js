@@ -30,7 +30,7 @@ const Banner = ({ headerHeight }) => {
         <Slider {...settings}>
             {images.map((image, index) => (
             <div key={index} className= "lg:h-[450px] xl:h-[500px] 2xl:h-[550px] w-full bg-black">
-                <Link to="/home/products">
+                <Link to="/home/products/all">
                     <img
                         src={image.src}
                         alt={image.alt}

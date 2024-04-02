@@ -9,10 +9,10 @@ const Account = () => {
     const navigate = useNavigate();
     
     const links = [
-        {title: "Profile", PageName: "profile"},
-        {title: "Coupons/ Rewards", PageName: "coupons"},
-        {title: "Delete Account", PageName: "delete"},
-        {title: "Sign Out", PageName: "signout"},
+        {Page: "Profile", id: "profile"},
+        {Page: "Coupons/ Rewards", id: "coupons"},
+        {Page: "Delete Account", id: "delete"},
+        {Page: "Sign Out", id: "signout"},
     ];
 
     const handlePage = (page) => {
@@ -31,12 +31,12 @@ const Account = () => {
                     <div className="flex flex-col sm:flex-row xs:flex-row sm:border-b-2 xs:border-b-2 border-gray-600 drop-shadow-lg sm:justify-between">
                         {links.map((link) => (
                             <p 
-                                key={link.PageName}
-                                className={`hover:underline ${currentPage === link.PageName ? `${currentPage === "delete" ? "bg-[#E23232]" : "bg-[#285f8899]"}` : ""} text-xl lg:text-lg md:text-sm sm:text-sm xs:text-xs px-6 py-3 sm:px-1 xs:px-1 border-b-2 border-gray-600 w-full sm:text-center xs:text-center sm:flex sm:justify-center sm:items-center xs:flex xs:justify-center xs:items-center sm:border-x xs:border-x`}
+                                id={link.id}
+                                className={`hover:underline ${currentPage === link.id ? `${currentPage === "delete" ? "bg-[#E23232]" : "bg-[#285f8899]"}` : ""} text-xl lg:text-lg md:text-sm sm:text-sm xs:text-xs px-6 py-3 sm:px-1 xs:px-1 border-b-2 border-gray-600 w-full sm:text-center xs:text-center sm:flex sm:justify-center sm:items-center xs:flex xs:justify-center xs:items-center sm:border-x xs:border-x`}
                                 style={{ cursor: 'pointer' }}
-                                onClick={() => handlePage(link.PageName)}
+                                onClick={() => handlePage(link.id)}
                             >
-                                {link.title}
+                                {link.Page}
                             </p>
                         ))}
                     </div>

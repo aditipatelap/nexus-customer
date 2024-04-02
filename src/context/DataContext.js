@@ -1,5 +1,4 @@
 import React, { createContext, useState, useEffect } from 'react';
-import useAxiosFetch from '../hooks/useAxiosFetch';
 
 const DataContext = createContext({});
 
@@ -25,14 +24,13 @@ export const DataProvider = ({ children }) => {
 
     const [products, setProducts] = useState([]);
     const [search, setSearch] = useState('');
-    const [searchResult, setSearchResult] = useState([]);
-  
-    const { data, fetchError, isLoading } = useAxiosFetch("https://nexus-3g6r.onrender.com/app/get-product");
-
-    useEffect(() => {
-        setProducts(data);
-    }, [data]);
+    const [searchResult , setSearchResult] = useState([]);
     
+    useEffect(() => {
+        const filterProducts = products.filter((product) => ( product.name.toLowerCase().includes(search.toLowerCase()) ))
+        setSearchResult(filterProducts);
+    }, [products, search]);
+
     return (
         <DataContext.Provider value={{
             customerId, setCustomerId,
@@ -53,8 +51,9 @@ export const DataProvider = ({ children }) => {
             bagList, setBagList,
             ordersList, setOrdersList,
             
-            products, fetchError, isLoading,
+            products,   setProducts,
             search, setSearch,
+            searchResult , setSearchResult,
         }}>
             {children}
         </DataContext.Provider>

@@ -1,4 +1,4 @@
-import React, { useRef, useEffect, useState } from "react";
+import React, { useRef, useEffect, useState, useContext } from "react";
 import Header from "../header/Header";
 import Nav from "../header/Nav";
 import ProfileMenu from "../header/ProfileMenu";
@@ -7,10 +7,12 @@ import Category from './Category';
 import Deals from './Deals';
 import BestSeller from './BestSeller';
 import Footer from "../footer/Footer";
+import DataContext from "../context/DataContext";
 // import BrandBag from './BrandBag';
 
 const Home = () => {
   const headerRef = useRef(null);
+  const { setSearch } = useContext(DataContext);
   const [headerHeight, setHeaderHeight] = useState(0);
   const [isProfileClicked, setIsProfileClicked] = useState(false);
   const blurStyle = isProfileClicked ? { filter: 'blur(5px)' } : {};
@@ -38,6 +40,9 @@ const Home = () => {
 
     }, [headerHeight]); 
 
+    useEffect(() => {
+      setSearch('');
+    }, [])
 
   return (
     <div>

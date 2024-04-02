@@ -56,10 +56,10 @@ const ShowProfile = ({ handleEditClick }) => {
                             <label htmlFor={detail.id}>{detail.placeholder}:</label>
                             {/* don't show password field */}
                             {detail.id === "password" &&
-                                <p className="border-b-2 border-gray-300 mt-1 px-2">********</p>
+                                <p className="border-b-2 border-gray-300 mt-1 px-2 break-words">********</p>
                             }
                             {detail.id !== "password" &&
-                                <p className="border-b-2 border-gray-300 mt-1 px-2">{detail.value}</p>
+                                <p className="border-b-2 border-gray-300 mt-1 px-2 break-words">{detail.value}</p>
                             }
                         </div>
                     </div>

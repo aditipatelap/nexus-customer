@@ -187,7 +187,7 @@ const EditProfile = ({ handleEditClick }) => {
                                 type="file"
                                 accept="image/*"
                                 onChange={convertToBase64}
-                                style={{ display: 'none' }}
+                                className="hidden"
                             />
                             </div>
                         </div>

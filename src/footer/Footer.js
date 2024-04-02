@@ -85,8 +85,8 @@ const Footer = () => {
             </div>
 
             {/* copyright footer  */}
-            <div className="header-background font-poppins font-normal py-2 text-center">
-                <p className="text-gray-900 text-sm md:text-xs sm:text-xs xs:text-[10px]">© 2024 NEXUS E-RETAIL LIMITED All Rights Reserved.</p>
+            <div className="header-background font-poppins font-normal pt-2 text-center">
+                <p className="p-1 text-gray-900 bg-[#deeef7] text-sm md:text-xs sm:text-xs xs:text-[10px]">© 2024 NEXUS E-RETAIL LIMITED All Rights Reserved.</p>
             </div>
         </footer>
     )

@@ -1,5 +1,5 @@
 import React from "react";
-import { Routes, Route } from 'react-router-dom';
+import { Routes, Route, useLocation } from 'react-router-dom';
 import { DataProvider } from './context/DataContext';
 import Login from "./login/Login";
 import Auth from "./signup/Auth";
@@ -7,31 +7,41 @@ import Register from "./signup/Register";
 import Home from "./home/Home";
 import Account from "./account/Account";
 import Products from "./product/Products";
+import ProductsCat from "./product/ProductsCat";
 import ProductPage from "./product/ProductPage";
 import Favorite from "./favorite/Favorite";
 import Bag from "./bag/Bag";
 import Missing from "./missing/Missing";
 
-function App() {
+function ScrollToTop({ children }) {
+  const { pathname } = useLocation();
 
+  React.useEffect(() => {
+    window.scrollTo(0, 0);
+  }, [pathname]);
+
+  return children;
+}
+
+function App() {
   return (
     <div className="App">
       <DataProvider>
         <Routes>
-          <Route path="/" element={ <Login /> } />
-          <Route path="/signup" element={ <Auth /> } />
-          <Route path="/register" element={ <Register /> } />
-          <Route path="/home" element={ <Home /> } />
-          <Route path="/account" element={ <Account /> } />
-          <Route path="/home/products" element={ <Products /> } />
-          <Route path="/home/products/:id" element={ <ProductPage /> } />
-          <Route path="/favorite" element={ <Favorite /> } />
-          <Route path="/bag" element={ <Bag /> } />
-          <Route path="/*" element={ <Missing /> } />
+          <Route path="/" element={<ScrollToTop><Login /></ScrollToTop>} />
+          <Route path="/signup" element={<ScrollToTop><Auth /></ScrollToTop>} />
+          <Route path="/register" element={<ScrollToTop><Register /></ScrollToTop>} />
+          <Route path="/home" element={<ScrollToTop><Home /></ScrollToTop>} />
+          <Route path="/account" element={<ScrollToTop><Account /></ScrollToTop>} />
+          <Route path="/home/products/all" element={<ScrollToTop><Products /></ScrollToTop>} />
+          <Route path="/home/products/:cat" element={<ScrollToTop><ProductsCat /></ScrollToTop>} />
+          <Route path="/home/products/detail/:id" element={<ScrollToTop><ProductPage /></ScrollToTop>} />
+          <Route path="/favorite" element={<ScrollToTop><Favorite /></ScrollToTop>} />
+          <Route path="/bag" element={<ScrollToTop><Bag /></ScrollToTop>} />
+          <Route path="/*" element={<ScrollToTop><Missing /></ScrollToTop>} />
         </Routes>
       </DataProvider>
     </div>
-
   );
 }
 
