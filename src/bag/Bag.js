@@ -50,7 +50,7 @@ const Bag = () => {
 
     const data = { productId, customerId };
     try {
-        const response = await axios.delete("http://localhost:8000/customer/bag/remove", { data });
+        const response = await axios.delete("https://nexus-backend-380o.onrender.com/customer/bag/remove", { data });
         if (response.data.status === "removed") {
             // remove favoriteList
             const updateList = bagList.filter(id => id !== productId);

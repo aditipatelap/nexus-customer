@@ -50,7 +50,7 @@ const Favorite = () => {
 
     const data = { productId, customerId };
     try {
-        const response = await axios.delete("http://localhost:8000/customer/favorite/remove", { data });
+        const response = await axios.delete("https://nexus-backend-380o.onrender.com/customer/favorite/remove", { data });
         if (response.data.status === "removed") {
             // remove favoriteList
             const updateList = favoriteList.filter(id => id !== productId);

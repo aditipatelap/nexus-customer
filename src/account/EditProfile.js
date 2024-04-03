@@ -127,7 +127,7 @@ const EditProfile = ({ handleEditClick }) => {
     const handleEditProfile = async () => {
         const data = { profilePic, firstName, lastName, email, password, phoneNumber, gender, birthday, building, landmark, area, district, state };
         try {  
-            const response = await axios.put("http://localhost:8000/customer/update/profile", data);
+            const response = await axios.put("https://nexus-backend-380o.onrender.com/customer/update/profile", data);
             if(response.data.status === "updated") {
                 alert("Your profile has been updated");
                 handleUserData(response.data.user);

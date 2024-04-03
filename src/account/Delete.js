@@ -37,7 +37,7 @@ const Delete = () => {
   const handleDelete = async () => {
     if (textInput === "DELETE") {
       try {
-        const response = await axios.delete("http://localhost:8000/customer/delete", { data: { email } });
+        const response = await axios.delete("https://nexus-backend-380o.onrender.com/customer/delete", { data: { email } });
         if (response.data.status === "deleted") {
           handleUserData();
           alert("Your Account has been deleted");

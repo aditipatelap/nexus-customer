@@ -58,14 +58,14 @@ const Login = () => {
 
     const handleLogin = async () => {
         try {
-            const response = await axios.post("http://localhost:8000/customer/login", {email, password} );
+            const response = await axios.post("https://nexus-backend-380o.onrender.com/customer/login", {email, password} );
             setEmail('');
             setPassword('');
             const { data } = response;
             if (data.status === "success") {
                 const user = data.user;
                 handleUserData(user);
-                const res = await axios.get("http://localhost:8000/product/get/all");
+                const res = await axios.get("https://nexus-backend-380o.onrender.com/product/get/all");
                 if(res.data.status === "success") {
                     const prdcts = res.data.products;
                     setProducts(prdcts);

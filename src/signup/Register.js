@@ -125,7 +125,7 @@ const Register = () => {
         const data = { profilePic, firstName, lastName, email, password, phoneNumber, gender, birthday, building, landmark, area, district, state };
         try {
             console.log(data);  
-            const response = await axios.post("http://localhost:8000/customer/register", data);
+            const response = await axios.post("https://nexus-backend-380o.onrender.com/customer/register", data);
             if(response.data.status === "added") {
                 alert("Thank you for registering");
                 handleUserData(response.data.user);

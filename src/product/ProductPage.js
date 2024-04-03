@@ -56,7 +56,7 @@ const ProductPage = () => {
         else {
             const data = { productId, customerId };
             try {
-                const response = await axios.put("http://localhost:8000/customer/favorite/add", data);
+                const response = await axios.put("https://nexus-backend-380o.onrender.com/customer/favorite/add", data);
                 if (response.data.status === "added") {
                     // add into favoriteList
                     const updateList = [...favoriteList, productId];
@@ -89,7 +89,7 @@ const ProductPage = () => {
         else {
             const data = { productId, customerId };
             try {
-                const response = await axios.put("http://localhost:8000/customer/bag/add", data);
+                const response = await axios.put("https://nexus-backend-380o.onrender.com/customer/bag/add", data);
                 if (response.data.status === "added") {
                     // add into bagList
                     const updateList = [...bagList, productId];
