@@ -1,16 +1,16 @@
 import React, { useRef, useContext, useEffect, useState } from 'react';
 import { useParams, Link, useNavigate } from "react-router-dom";
-import axios from 'axios';
+import axios from "axios";
 import Header from "../header/Header";
 import Nav from "../header/Nav";
 import ProfileMenu from "../header/ProfileMenu";
 import Footer from "../footer/Footer";
 import DataContext from '../context/DataContext';
 
-const ProductPage = () => {
+const ProductPageCat = () => {
     const navigate = useNavigate();
     const { searchResult, customerId, favoriteList, setFavoriteList, bagList, setBagList } = useContext(DataContext);
-    const { id } = useParams();
+    const { cat, id } = useParams();
     const product = searchResult.find((product) => product._id === id);
     const headerRef = useRef(null);
     const [headerHeight, setHeaderHeight] = useState(0);
@@ -77,21 +77,20 @@ const ProductPage = () => {
 
     }
 
-    // handle add product in bag
-    const handleBagList = async () => {
+     // handle add product in bag
+     const handleBagList = async () => {
         const productId = id;
 
         if (bagList.includes(productId)) {
             alert("Product is already in bag!");
             navigate("/bag");
         }
-
         else {
             const data = { productId, customerId };
             try {
                 const response = await axios.put("http://localhost:8000/customer/bag/add", data);
                 if (response.data.status === "added") {
-                    // add into bagList
+                    // add into favoriteList
                     const updateList = [...bagList, productId];
                     setBagList(updateList);
                     navigate("/bag");
@@ -114,13 +113,13 @@ const ProductPage = () => {
     <div>
         {/* fixed header and nav bar  */}
         <div className="fixed w-full z-10 top-0 " ref={headerRef}>
-            <Header handleProfileClick={handleProfileClick} />
-            
-            <div style={blurStyle}>
-            <Nav  />
-            </div>
-            
-            {isProfileClicked && <ProfileMenu handleProfileClick={handleProfileClick} /> }
+        <Header 
+        handleProfileClick={handleProfileClick}
+        />
+        <div style={blurStyle}>
+        <Nav  />
+        </div>
+        {isProfileClicked && <ProfileMenu handleProfileClick={handleProfileClick} /> }
         </div>
 
         {/* product details  */}
@@ -129,7 +128,7 @@ const ProductPage = () => {
                 <p className="pt-5 sm:py-3 xs:py-3 md:text-sm sm:text-sm xs:text-xs">
                     <Link to="/home" className="hover:underline">Home</Link>
                     &nbsp; &gt; &nbsp; 
-                    <Link to="/home/products/all" className="hover:underline"> Products</Link>
+                    <Link to={`/home/products/${cat}`} className="hover:underline"> Products</Link>
                     &nbsp; &gt; &nbsp; 
                     <Link to={`/home/products/${product._id}`} className="hover:underline">
                         {product.name.length > 13 ? product.name.slice(0, 13) + '...' : product.name}
@@ -139,6 +138,7 @@ const ProductPage = () => {
                 <div className="mt-8 sm:mt-1 xs:mt-1 mb-10">
                     {/* product main information */}
                     <div className="grid place-content-center grid-cols-2 sm:grid-cols-1 xs:grid-cols-1 sm:place-items-center xs:place-items-center">
+                        
                         {/* product image */}
                         <div className="place-self-center border-2 border-gray-400 rounded-md p-3 w-[670px] h-[670px] xl:w-[500px] xl:h-[500px] lg:w-[350px] lg:h-[350px] md:w-64 md:h-64 sm:w-64 sm:h-64 xs:w-64 xs:h-64">
                             <img src={product.photo} alt="product" className="w-full h-full object-contain" />
@@ -212,4 +212,4 @@ const ProductPage = () => {
   )
 }
 
-export default ProductPage
+export default ProductPageCat;

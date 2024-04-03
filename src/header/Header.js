@@ -43,15 +43,15 @@ const Header = ({ handleProfileClick }) => {
 
         {/* icons on the right */}
         <div className="space-x-3 flex justify-center">
-          <Link to="/home/products/all">
+          <Link to="/favorite">
             <FaHeart className="text-[#3F3939] text-lg sm:text-xl md:text-2xl lg:text-3xl xl:text-4xl 2xl:text-6xl"/>  
           </Link>
-          <Link to="/home/products/all">
+          <Link to="/bag">
             <IoBagHandle className="text-[#3F3939] text-lg sm:text-xl md:text-2xl lg:text-3xl xl:text-4xl 2xl:text-6xl"/>
           </Link>
-          <a href="#" onClick={handleProfileClick}>
+          <div onClick={handleProfileClick} className="cursor-pointer">
             <MdAccountCircle className="z-20 text-[#3F3939] text-lg sm:text-xl md:text-2xl lg:text-3xl xl:text-4xl 2xl:text-6xl" />
-        </a>
+          </div>
         </div>
     </header>
   );

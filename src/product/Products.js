@@ -61,7 +61,7 @@ const Products = () => {
           <p className="pt-5 sm:py-3 xs:py-3 md:text-sm sm:text-sm xs:text-xs">
             <Link to="/home" className='hover:underline'>Home</Link>
             &nbsp; &gt; &nbsp; 
-            <Link to="/home/products" className='hover:underline'>Products</Link> 
+            <Link to="/home/products/all" className='hover:underline'>Products</Link> 
           </p>
           
           {/* Items list */}

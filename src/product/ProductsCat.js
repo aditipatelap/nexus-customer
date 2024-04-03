@@ -66,7 +66,7 @@ const ProductsCat = () => {
             <p className="pt-5 sm:py-3 xs:py-3 md:text-sm sm:text-sm xs:text-xs">
               <Link to="/home" className='hover:underline'>Home</Link>
               &nbsp; &gt; &nbsp; 
-              <Link to="/home/products" className='hover:underline'>Products</Link> 
+              <Link to={`/home/products/${cat}`} className='hover:underline'>Products</Link> 
             </p>
             
             {/* Items list */}
@@ -78,7 +78,7 @@ const ProductsCat = () => {
             {filteredProducts.length !== 0 &&
               <div className="grid grid-cols-4 md:grid-cols-3 sm:grid-cols-2 xs:grid-cols-1 gap-5 mt-5 mb-10">
                 {filteredProducts.map((product) => (
-                  <Link to={`/home/products/detail/${product._id}`} key={product._id}>
+                  <Link to={`/home/products/${cat}/detail/${product._id}`} key={product._id}>
                     <div className="h-full bg-white border-2 border-gray-400 rounded-xl p-2 pt-4 shadow-lg flex flex-col item-hover">
                       {/* add image */}
                       <div className="h-48 md:h-40 sm:h-36 xs:h-28 flex justify-center items-center">
