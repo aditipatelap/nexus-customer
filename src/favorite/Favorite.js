@@ -69,7 +69,7 @@ const Favorite = () => {
   }
 
   return (
-    <div className="flex flex-col h-screen">
+    <div className="flex flex-col">
       {/* fixed header and nav bar  */}
       <div className="fixed w-full z-10 top-0 " ref={headerRef}>
         <Header handleProfileClick={handleProfileClick}/>
@@ -82,7 +82,7 @@ const Favorite = () => {
       </div>
 
       {/* products list */}
-      <div style={blurStyle} className="flex-1 h-full">
+      <div style={blurStyle} className="flex-1 min-h-full">
         <main className="w-full font-poppins px-6" style={{marginTop: `${headerHeight}px`}}>  
 
           {/* Items list */}

@@ -188,7 +188,7 @@ const ProductPage = () => {
                         </div>
                     </div>
                     {/* more details  */}
-                    <div className=" my-10 border-y border-black ">
+                    <div className="my-10 border-y border-black ">
                         <h1 className="my-4 font-bold text-2xl lg:text-xl md:text-lg sm:text-base xs:text-sm font-balsamiq-sans">MORE DETAILS</h1>
                         <h3 className="font-semibold mb-4 text-lg">
                             Seller: {product.sellerName}
