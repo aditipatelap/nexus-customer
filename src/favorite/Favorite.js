@@ -84,6 +84,9 @@ const Favorite = () => {
       {/* products list */}
       <div style={blurStyle} className="flex-1 min-h-full">
         <main className="w-full font-poppins px-6" style={{marginTop: `${headerHeight}px`}}>  
+          <div className="pt-5">
+            <p className="font-semibold text-3xl flex justify-center">Wish list</p>
+          </div>
 
           {/* Items list */}
           {filterProducts.length === 0 && 

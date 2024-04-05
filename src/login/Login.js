@@ -1,4 +1,4 @@
-import React, { useContext, useEffect } from 'react';
+import React, { useContext, useEffect, useState } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 import axios from "axios";
 import DataContext from '../context/DataContext';
@@ -15,6 +15,8 @@ const Login = () => {
         setFavoriteList, setBagList, setOrdersList,
         products, setProducts,
     } = useContext(DataContext);
+
+    const [loading, setLoading] = useState(false);
 
     useEffect(() => {
         setCustomerId();
@@ -57,6 +59,7 @@ const Login = () => {
     }
 
     const handleLogin = async () => {
+        setLoading(true);
         try {
             const response = await axios.post("https://nexus-backend-380o.onrender.com/customer/login", {email, password} );
             setEmail('');
@@ -69,6 +72,7 @@ const Login = () => {
                 if(res.data.status === "success") {
                     const prdcts = res.data.products;
                     setProducts(prdcts);
+                    setLoading(false);
                     navigate("/home");
                 }
             }
@@ -86,6 +90,7 @@ const Login = () => {
         }
         catch (error) {
             console.error(error);
+            setLoading(false);
         }
     };
 
@@ -143,6 +148,16 @@ const Login = () => {
                     </Link>
                 </div>
             </div>
+
+            {/* Loading popup */}
+            {loading && (
+                <div className="loading-popup">
+                    <div className="loading-content">
+                        <p>Loading... Please wait...</p>
+                    </div>
+                </div>
+            )}
+
         </div>
     )
 }

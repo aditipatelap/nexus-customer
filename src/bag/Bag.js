@@ -103,7 +103,9 @@ const Bag = ({ setOrderData }) => {
       {/* products list */}
       <div style={blurStyle} className="flex-1 h-full">
         <main className="w-full font-poppins px-6 mb-3" style={{marginTop: `${headerHeight}px`}}>  
-
+          <div className="pt-5">
+            <p className="font-semibold text-3xl flex justify-center">Bucket list</p>
+          </div>
           {/* Items list */}
           {filterProducts.length === 0 && 
             <div className="pt-28 flex flex-col justify-center w-full items-center">
@@ -195,9 +197,9 @@ const Bag = ({ setOrderData }) => {
 
               <button 
                 className="w-full py-2 rounded-xl hover:underline focus:underline text-white font-podkova font-semibold border bg-sky-900 text-2xl md:text-xl sm:text-xl xs:text-xl"
-                // onClick={handleOrder}
+                onClick={handleOrder}
               >
-                PAYMENT
+                PLACE ORDER
               </button>
 
             </div>
