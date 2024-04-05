@@ -67,7 +67,7 @@ const Generate = ({ orderData }) => {
     
     return (
         <div className="min-h-screen w-full flex flex-col justify-center items-center font-poppins">
-            <div className="border-4 border-sky-950 rounded-lg flex flex-col p-3">
+            <div className="border-4 border-sky-950 rounded-lg flex flex-col p-3 px-5">
                 {/* title */}
                 <div className="border-b-2 border-sky-900 px-96 pb-1 font-balsamiq-sans font-bold text-2xl text-sky-900">
                     <h2 className="flex justify-center">
@@ -107,7 +107,7 @@ const Generate = ({ orderData }) => {
                 {/* details */}
                 <div className="flex flex-col space-y-4 mb-7">
                     <div className="p-1 font-medium">
-                       <li className="">Billing Details:</li>
+                       <li className="underline">Billing Details:</li>
                     </div>
                     {/* billing name */}
                     <div className="flex w-full">
@@ -153,6 +153,19 @@ const Generate = ({ orderData }) => {
                         </div>
                     </div>
 
+                </div>
+
+                <div className="flex items-center mb-3">
+                    <input 
+                        id="cod"
+                        type="checkbox" 
+                        required
+                        checked
+                        className="mr-2 w-5 h-5"
+                    />
+                    <label htmlFor="cod" className="font-poppins font-semibold">
+                        Cash On Delivery
+                    </label>
                 </div>
 
                 {/* button */}
