@@ -86,8 +86,6 @@ const Login = () => {
 
         try {
             const response = await axios.post(`${URL}/customer/login`, {email, password} );
-            setEmail('');
-            setPassword('');
             const { data } = response;
             if (data.status === "success") {
                 handleUserData( data.user);
@@ -96,21 +94,28 @@ const Login = () => {
             }
             else if (data.status === "incorrect") {
                 alert("Wrong password");
+                setPassword('');
                 setLoading(false);
                 navigate("/");
             }
             else if (data.status === "notexist") {
                 alert("You have not sign up");
+                setEmail('');
+                setPassword('');
                 setLoading(false);
                 navigate("/signup");
             }
             else if (data.status === "fail") {
+                setEmail('');
+                setPassword('');
                 alert("Something went wrong");
                 setLoading(false);
             }
         }
         catch (error) {
             console.error(error);
+            setEmail('');
+            setPassword('');
             setLoading(false);
         }
     };
