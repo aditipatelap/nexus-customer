@@ -1,9 +1,10 @@
-import React, { useContext, useEffect } from 'react'
+import React, { useContext, useEffect, useState } from 'react'
 import { Link, useNavigate } from 'react-router-dom';
 import DataContext from '../context/DataContext';
 import axios from "axios";
 
-const Auth = () => {
+const Auth = ({ setVerificationCode }) => {
+    const URL = process.env.REACT_APP_BACKEND_URL;
     const navigate = useNavigate();
     const logoPath = process.env.PUBLIC_URL + "/images/logo/logo_3x.png";
     const { 
@@ -13,6 +14,8 @@ const Auth = () => {
         setBuilding, setLandmark, setArea, setDistrict, setState,
         setFavoriteList, setBagList, setOrdersList,
     } = useContext(DataContext);
+
+    const [emailError, setEmailError] = useState('');
 
     useEffect(() => {
         setCustomerId();
@@ -35,15 +38,25 @@ const Auth = () => {
     }, [])
     
     const handleSignup = async () => {
+        // Regular expression for email validation
+        const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+    
+        // Check if the entered email is valid
+        if (!emailRegex.test(email)) {
+            setEmailError('Please enter a valid email address.');
+            return;
+        }
+    
         try {
-            const response = await axios.post("https://nexus-backend-380o.onrender.com/customer/auth", { email });
+            const response = await axios.post(`${URL}/customer/auth`, { email });
             if(response.data.status === "exist"){
                 setEmail('');
-                alert("User already exist");
+                alert("User already exists");
                 navigate("/");
             }
             else if (response.data.status === "notexist") {
-                navigate("/register");
+                setVerificationCode(response.data.code);
+                navigate("/verification");
             }
             else if (response.data.status === "fail") {
                 alert("Something went wrong");
@@ -53,6 +66,15 @@ const Auth = () => {
             console.error(error);    
         }
     };
+
+    // Function to handle email input change
+    const handleEmailChange = (e) => {
+        // Clear the email error when input field changes
+        setEmailError('');
+        // Update the email state
+        setEmail(e.target.value);
+    };
+    
 
     return (
         <div className='flex flex-col items-center justify-center h-dvh m-3'>
@@ -70,21 +92,24 @@ const Auth = () => {
                 </p>
                 {/* form  */}
                 <form id="loginPage" action="POST" onSubmit={(e) => e.preventDefault()}>
-                    <div className='w-full border-black shadow-md mb-8'>
+                    <div className='w-full border-black shadow-md mb-3'>
                         <label htmlFor={email} className="text-nowrap mr-5 hidden">Email Id:</label>
                         <input 
                             id="email"
                             required
                             autoFocus
+                            // autoComplete='off'
                             type="email"
                             className='w-full rounded-md font-poly placeholder-slate-300 text-white p-3 text-lg bg-[#285F88]'
                             placeholder="Enter Your Email ID"
                             value={email}
-                            onChange={(e) => setEmail(e.target.value) }
+                            onChange={handleEmailChange}
                         />
                     </div>
+                    {/* Show error message if email is invalid */}
+                    {emailError && <p className="text-red-500 text-sm mb-2">{emailError}</p>}
                     {/* terms Checkbox  */}
-                    <div className="flex items-center mb-3">
+                    <div className="flex items-center mb-3 mt-5">
                         <input 
                             id="termsCheckbox"
                             type="checkbox" 
@@ -118,7 +143,7 @@ const Auth = () => {
                     </div>
                 </form>
                 <div className="flex w-full justify-center sm:text-sm xs:text-sm">
-                    <Link to='/' className='underline hover:text-blue-600'>
+                    <Link to='/' className='underline hover:text-blue-600 font-poppins text-sm'>
                         have an account?
                     </Link>
                 </div>

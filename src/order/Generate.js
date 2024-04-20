@@ -4,11 +4,13 @@ import axios from 'axios';
 import { useNavigate } from 'react-router-dom';
 
 const Generate = ({ orderData }) => {
+    const URL = process.env.REACT_APP_BACKEND_URL;
     const navigate = useNavigate();
     const { customerId, firstName, lastName, phoneNumber, building, landmark, area, district, state, ordersList, setOrdersList, bagList, setBagList } = useContext(DataContext);
     const [billName, setBillName] = useState(firstName + " " + lastName);
     const [billPhone, setBillPhone] = useState(phoneNumber);
-    const [billAddress, setBillAddress] = useState(`${building}, ${landmark}, ${area}, ${district}, ${state}.`);
+    const billAddress = `${building}, ${landmark}, ${area}, ${district}, ${state}.`;
+    const [shipAddress, setShipAddress] = useState(`${building}, ${landmark}, ${area}, ${district}, ${state}.`);
 
     // Function to format number in Indian numbering style
     const formatIndianNumber = (num) => {
@@ -44,11 +46,11 @@ const Generate = ({ orderData }) => {
             stageList.push(stage);
         })
 
-        const orderDetails = { productIdList, productNameList, amountList, sellerIdList, sellerNameList, stageList, totalAmount, customerId, billName, billPhone, billAddress };
+        const orderDetails = { productIdList, productNameList, amountList, sellerIdList, sellerNameList, stageList, totalAmount, customerId, billName, billPhone, billAddress, shipAddress };
 
         try {
             // Send all product data together in a single request
-            const response = await axios.post("https://nexus-backend-380o.onrender.com/order/new", orderDetails );
+            const response = await axios.post(`${URL}/order/new`, orderDetails );
             if (response.data.status === "success") {
                 const updateList = [...ordersList, response.data.orderId];
                 setOrdersList(updateList);
@@ -140,15 +142,15 @@ const Generate = ({ orderData }) => {
 
                     {/* billing address */}
                     <div className="flex flex-col w-full">
-                        <label htmlFor="billadd" className="text-nowrap flex items-center w-full">Billing Address: &nbsp; </label>
+                        <label htmlFor="shipadd" className="text-nowrap flex items-center w-full">Shipping Address: &nbsp; </label>
                         <div className="w-full mt-1">
                             <textarea 
                                 type="text" 
                                 required
-                                value={billAddress}
+                                value={shipAddress}
                                 style={{ resize: "none" }}
                                 className="border-2 border-gray-300 rounded-sm px-2 w-full h-20"
-                                onChange={(e) => setBillAddress(e.target.value)}>
+                                onChange={(e) => setShipAddress(e.target.value)}>
                             </textarea>
                         </div>
                     </div>

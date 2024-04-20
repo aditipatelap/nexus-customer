@@ -8,6 +8,7 @@ import Footer from "../footer/Footer";
 import DataContext from '../context/DataContext';
 
 const ProductPageBag = () => {
+    const URL = process.env.REACT_APP_BACKEND_URL;
     const navigate = useNavigate();
     const { searchResult, customerId, favoriteList, setFavoriteList, bagList, setBagList } = useContext(DataContext);
     const { id } = useParams();
@@ -56,7 +57,7 @@ const ProductPageBag = () => {
         else {
             const data = { productId, customerId };
             try {
-                const response = await axios.put("https://nexus-backend-380o.onrender.com/customer/favorite/add", data);
+                const response = await axios.put(`${URL}/customer/favorite/add`, data);
                 if (response.data.status === "added") {
                     // add into favoriteList
                     const updateList = [...favoriteList, productId];
@@ -89,7 +90,7 @@ const ProductPageBag = () => {
         else {
             const data = { productId, customerId };
             try {
-                const response = await axios.put("https://nexus-backend-380o.onrender.com/customer/bag/add", data);
+                const response = await axios.put(`${URL}/customer/bag/add`, data);
                 if (response.data.status === "added") {
                     // add into bagList
                     const updateList = [...bagList, productId];

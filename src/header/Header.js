@@ -4,7 +4,7 @@ import DataContext  from "../context/DataContext";
 import { FiSearch } from "react-icons/fi";
 import { FaHeart } from "react-icons/fa6";
 import { IoBagHandle } from "react-icons/io5";
-import { MdAccountCircle } from "react-icons/md";
+import { MdAccountCircle, MdLogout } from "react-icons/md";
 
 const Header = ({ handleProfileClick }) => {
   const logoPath = process.env.PUBLIC_URL + "/images/logo/logo_3x.png";
@@ -50,8 +50,11 @@ const Header = ({ handleProfileClick }) => {
             <IoBagHandle className="text-[#3F3939] text-lg sm:text-xl md:text-2xl lg:text-3xl xl:text-4xl 2xl:text-6xl"/>
           </Link>
           <div onClick={handleProfileClick} className="cursor-pointer">
-            <MdAccountCircle className="z-20 text-[#3F3939] text-lg sm:text-xl md:text-2xl lg:text-3xl xl:text-4xl 2xl:text-6xl" />
+            <MdAccountCircle className="text-[#3F3939] text-lg sm:text-xl md:text-2xl lg:text-3xl xl:text-4xl 2xl:text-6xl" />
           </div>
+          <Link to="/" title="Logout">
+            <MdLogout className="text-[#3F3939] text-lg sm:text-xl md:text-2xl lg:text-3xl xl:text-4xl 2xl:text-6xl"/>
+          </Link>
         </div>
     </header>
   );

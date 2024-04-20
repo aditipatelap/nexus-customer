@@ -4,7 +4,7 @@ import { Link } from "react-router-dom";
 const ProfileMenu = ({ handleProfileClick }) => {
     const menuLinks = [
         {id:"account", src:"/account", title:"Your Account"},
-        {id:"orderTrack", src:"#", title:"Track Your Order"},
+        {id:"orderTrack", src:"/order/track", title:"Track Your Order"},
         {id:"switch", src:"/", title:"Switch Account"},
         {id:"signout", src:"/", title:"Sign Out"},
         {id:"help", src:"#", title:"Help Center"},

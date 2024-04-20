@@ -9,6 +9,7 @@ import Nav from '../header/Nav';
 import Footer from '../footer/Footer';
 
 const Bag = ({ setOrderData }) => {
+  const URL = process.env.REACT_APP_BACKEND_URL;
   const navigate = useNavigate();
   const { customerId, products, bagList, setBagList } = useContext(DataContext);
   const headerRef = useRef(null);
@@ -56,7 +57,7 @@ const Bag = ({ setOrderData }) => {
 
     const data = { productId, customerId };
     try {
-        const response = await axios.delete("https://nexus-backend-380o.onrender.com/customer/bag/remove", { data });
+        const response = await axios.delete(`${URL}/customer/bag/remove`, { data });
         if (response.data.status === "removed") {
             // remove favoriteList
             const updateList = bagList.filter(id => id !== productId);
@@ -121,7 +122,7 @@ const Bag = ({ setOrderData }) => {
                     <div className="flex flex-col shadow ">
                       {/* details */}
                       <div className="h-full border-x-2 border-t-2 border-gray-400 rounded-t-xl p-2 pt-4 flex flex-col hover:bg-[#e5e7eb] hover:text-[#65a30d] focus:bg-[#e5e7eb] focus:text-[#65a30d]">
-                        <Link to={`/favorite/${product._id}`}>
+                        <Link to={`/bag/${product._id}`}>
                           {/* add image */}
                           <div className="h-48 md:h-40 sm:h-36 xs:h-28 flex justify-center items-center">
                             <img src={product.photo} alt="product" className="h-full w-full object-contain"/>
@@ -211,7 +212,7 @@ const Bag = ({ setOrderData }) => {
 
 
         {/* fixed footer  */}
-        <div style={blurStyle}>
+        <div style={blurStyle} className="mt-auto">
             <Footer/>
         </div>
     </div>

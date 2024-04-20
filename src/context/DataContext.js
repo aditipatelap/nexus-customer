@@ -23,6 +23,8 @@ export const DataProvider = ({ children }) => {
     const [ordersList, setOrdersList] = useState([]);
 
     const [products, setProducts] = useState([]);
+    const [orders, setOrders] = useState([]);
+
     const [search, setSearch] = useState('');
     const [searchResult , setSearchResult] = useState([]);
     
@@ -52,6 +54,8 @@ export const DataProvider = ({ children }) => {
             ordersList, setOrdersList,
             
             products,   setProducts,
+            orders, setOrders,
+
             search, setSearch,
             searchResult , setSearchResult,
         }}>

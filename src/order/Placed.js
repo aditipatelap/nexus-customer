@@ -6,7 +6,7 @@ const Placed = () => {
     <div className="min-h-screen w-full flex justify-center items-center">
         <div className="flex flex-col">
             <p className="text-xl font-poppins font-semibold"> Your orders has been created. Now Please wait for the updates. </p>
-            <Link to="/home" className="text-center mt-2 text-blue-500 hover:underline">&larr; Go to Home </Link>
+            <Link to="/order/track" className="text-center mt-2 text-blue-500 hover:underline">&larr; Track Your Order </Link>
         </div>
     </div>
   )

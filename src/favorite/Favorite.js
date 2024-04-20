@@ -9,6 +9,7 @@ import Nav from '../header/Nav';
 import Footer from '../footer/Footer';
 
 const Favorite = () => {
+  const URL = process.env.REACT_APP_BACKEND_URL;
   const { customerId, products,  favoriteList, setFavoriteList } = useContext(DataContext);
   const headerRef = useRef(null);
   const [headerHeight, setHeaderHeight] = useState(0);
@@ -50,7 +51,7 @@ const Favorite = () => {
 
     const data = { productId, customerId };
     try {
-        const response = await axios.delete("https://nexus-backend-380o.onrender.com/customer/favorite/remove", { data });
+        const response = await axios.delete(`${URL}/customer/favorite/remove`, { data });
         if (response.data.status === "removed") {
             // remove favoriteList
             const updateList = favoriteList.filter(id => id !== productId);
@@ -69,7 +70,7 @@ const Favorite = () => {
   }
 
   return (
-    <div className="flex flex-col">
+    <div className="flex flex-col min-h-screen">
       {/* fixed header and nav bar  */}
       <div className="fixed w-full z-10 top-0 " ref={headerRef}>
         <Header handleProfileClick={handleProfileClick}/>
